@@ -95,7 +95,7 @@ strong {
 
 .section {
   display: flex;
-  justify-content: center;
+  justify-content: left;
   padding: 100px 170px;
   @include thirteen {
     padding: 100px;
@@ -131,7 +131,7 @@ strong {
   }
   &__content {
     font-weight: 300;
-    font-size: 1rem;
+    font-size: 1.5rem;
     width: 100%;
     max-width: 650px;
     @include tablet {
