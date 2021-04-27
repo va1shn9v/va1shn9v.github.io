@@ -99,6 +99,14 @@
     .technologist {
       background-image: url('../img/emojis/technologist.png');
     }
+    &.headshot_img{
+      @include table{
+        display:none
+      }
+      @include mobile{
+        display:none
+      }
+    }
   }
   &__contact {
     font-size: 1.25rem;
