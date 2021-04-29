@@ -5,9 +5,9 @@ description: A ML and Computer Vision enthusiast
 url: https://bchiang7.github.io/
 baseurl: ''
 email: pvaishnav2718@gmail.com
-cover: https://bchiang7.github.io/img/og.png
-logo: https://bchiang7.github.io/img/emojis/technologist.png
-resume: https://bchiang7.github.io/resume.pdf
+cover: ''
+logo: ''
+resume: www.vaishnavrao/resume.pdf
 social:
   - title: email
     url: mailto:pvaishnav2718@gmail.com
