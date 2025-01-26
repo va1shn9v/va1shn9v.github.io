@@ -1,271 +1,389 @@
 <!DOCTYPE HTML>
-<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
   <title>Vaishnav Potlapalli</title>
-  
   <meta name="author" content="Vaishnav Potlapalli">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  
-  <link rel="stylesheet" type="text/css" href="stylesheet.css">
   <link rel="icon" type="image/png" href="images/meteor.jpeg">
-</head>
 
+  <!-- Inline CSS for simplicity (move to separate stylesheet if needed) -->
+  <style>
+    :root {
+      --bg-color: #fafafa;
+      --text-color: #333;
+      --accent-color: #0066cc;
+      --light-gray: #f1f1f1;
+      --font-family: 'Arial', sans-serif;
+      --heading-color: #444;
+    }
+
+    /* Smooth scrolling for anchor links */
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      font-family: var(--font-family);
+      line-height: 1.6;
+    }
+
+    /* Main container */
+    .main-table {
+      max-width: 800px;
+      margin: 0 auto;
+      border-collapse: collapse;
+      width: 100%;
+      padding: 0 10px; /* A little side padding for smaller screens */
+    }
+
+    /* Navigation bar container */
+    .nav-table {
+      margin: 20px auto;
+      border-collapse: collapse;
+      width: 80%;
+      text-align: center;
+    }
+
+    .nav-table td a {
+      text-decoration: none;
+      color: var(--text-color);
+      font-weight: 600;
+      padding: 8px 16px;
+      transition: background-color 0.3s, color 0.3s;
+    }
+
+    .nav-table td a:hover {
+      background-color: var(--accent-color);
+      color: #fff;
+      border-radius: 4px;
+    }
+
+    /* Heading styles */
+    heading {
+      font-size: 1.5rem;
+      color: var(--heading-color);
+      font-weight: bold;
+      display: inline-block; /* keep heading as inline-block for spacing control */
+      margin: 0.5rem 0;
+    }
+
+    name {
+      font-size: 1.8rem;
+      font-weight: bold;
+      color: var(--heading-color);
+    }
+
+    papertitle {
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--text-color);
+    }
+
+    /* Tables for Experience / Education / Publication */
+    .info-table {
+      width: 100%;
+      border-collapse: separate;
+      border-spacing: 15px 10px;
+      margin: 20px 0;
+    }
+
+    /* Generic class for images so they scale properly */
+    .logo-img {
+      max-width: 120px;
+      height: auto;
+      border-radius: 8px; /* optional */
+      object-fit: cover;
+    }
+    .publication-img {
+      max-width: 150px;
+      height: auto;
+      border-radius: 8px; /* optional */
+      object-fit: cover;
+    }
+
+    /* Profile section (Name + Profile Picture) */
+    .profile-section {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 0 auto;
+    }
+
+    .profile-section td {
+      vertical-align: middle;
+      padding: 20px;
+    }
+
+    .profile-text {
+      text-align: center;
+    }
+
+    .profile-img {
+      width: 100%;
+      max-width: 300px;
+      border-radius: 8px;
+      height: auto;
+      object-fit: cover;
+    }
+
+    /* Links in the profile section */
+    .profile-links a {
+      margin: 0 8px;
+      color: var(--accent-color);
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.3s ease;
+    }
+
+    .profile-links a:hover {
+      color: #004a99;
+    }
+
+    /* Footer or last update note */
+    .footer-note {
+      font-size: 0.8rem;
+      margin-top: 30px;
+      color: #888;
+    }
+
+    .footer-note a {
+      color: var(--accent-color);
+      text-decoration: none;
+    }
+
+    .footer-note a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
 <body>
-  <table style="width:100%;max-width:800px;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
-    <tr style="padding:0px">
-      <td style="padding:0px">
-        <table style="width:80%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
-          <tr style="padding:0px">
-          <!--<td style="padding:2.5%;width:20%;vertical-align:middle;min-width:100px">-->
-          <td style="padding:1.5%;width:16%;vertical-align:middle;text-align:center">
-            <a href="index.html" target="_self">Home</a>
-          </td>
-         <td style="padding:1.5%;width:16%;vertical-align:middle;text-align:center">
-            <a href="#experience" target="_self">Experience</a>
-          </td>
-          <td style="padding:1.5%;width:16%;vertical-align:middle;text-align:center">
-            <a href="#publication" target="_self">Publication</a>
-          </td>
-          <td style="padding:1.5%;width:16%;vertical-align:middle;text-align:center">
-            <a href="#education" target="_self">Education</a>
-          </td>
-          <!-- <td style="padding:1.5%;width:16%;vertical-align:middle;text-align:center">
-            <a href="members.html">People</a>
-          </td> -->            
+
+  <!-- Outer container table -->
+  <table class="main-table">
+    <tr>
+      <td>
+
+        <!-- Navigation -->
+        <table class="nav-table">
+          <tr>
+            <td>
+              <a href="index.html" target="_self">Home</a>
+            </td>
+            <td>
+              <a href="#experience" target="_self">Experience</a>
+            </td>
+            <td>
+              <a href="#publication" target="_self">Publication</a>
+            </td>
+            <td>
+              <a href="#education" target="_self">Education</a>
+            </td>
           </tr>
         </table>
-        <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
-          <tr style="padding:0px">
-            <td style="padding:2.5%;width:63%;vertical-align:middle">
-              <p style="text-align:center">
+
+        <!-- Profile Section -->
+        <table class="profile-section">
+          <tr>
+            <td style="width:60%;">
+              <p class="profile-text">
                 <name>Vaishnav Potlapalli</name>
               </p>
-              <!-- <p>I am a Research Assistant at <a href="https://www.dhan.ai/"></a>, where I work on the intersection of machine learning and healthcare.
-              </p> -->
               <p>
-                I'm currently a graduate student at the New York University (NYU) Courant Institute of Mathematical Sciences and the Stern School of Business. My coursework revolves around the fascinating intersection of Computing and Entrepreneurship. I am broadly interseted in the fields of AI and Computer vision.In the past I was a research assistant at MBZUAI, where I worked on Image restoration and Video Action Recognition. In my free time I dive deep in sci-fi worlds or get salty playing dota.
+                I am currently a founding engineer at a stealth-stage startup, building AI Agents for marketing. I recently graduated from NYU’s Courant Institute of Mathematical Sciences and Stern School of Business, where I focused on the intersection of computing and entrepreneurship. My broader interests lie in AI Agents and computer vision, and I previously worked as a research assistant at MBZUAI on image restoration and video action recognition. When I’m not coding or exploring AI frontiers, you’ll often find me immersed in sci-fi worlds or battling it out in Dota.
               </p>
-              <p style="text-align:center">
-                <a href="mailto:pvaishnav2718@gmail.com">Email</a> &nbsp/&nbsp
-                <a href="data/vaishnav_resume.pdf">CV</a> &nbsp/&nbsp
-                <a href="https://twitter.com/__vaishnav">Twitter</a> &nbsp/&nbsp
-                <a href="https://github.com/va1shn9v/">Github</a>&nbsp/&nbsp
-                <a href="https://www.linkedin.com/in/vaishnav-potlapalli/">Linkedin</a>
+              <p class="profile-links">
+                <a href="mailto:pvaishnav2718@gmail.com">Email</a> /
+                <a href="data/vaishnav_resume.pdf">CV</a> /
+                <a href="https://twitter.com/__vaishnav">Twitter</a> /
+                <a href="https://github.com/va1shn9v/">Github</a> /
+                <a href="https://www.linkedin.com/in/vaishnav-potlapalli/">LinkedIn</a>
               </p>
             </td>
-            <td style="padding:2.5%;width:40%;max-width:40%">
-              <a href="images/JonBarron.jpg"><img style="width:100%;max-width:100%" alt="profile photo"  src="images/mickey-5.jpeg" class="hoverZoomLink" ></a>
+            <td style="width:40%; text-align:center;">
+              <a href="images/JonBarron.jpg">
+                <img 
+                  src="images/mickey-5.jpeg" 
+                  alt="profile photo" 
+                  class="profile-img"
+                />
+              </a>
             </td>
           </tr>
-        </tbody></table>
-                <table width="100%" border="0" cellspacing="15" cellpadding="10">
-          <a id="experience"><heading>&nbsp;&nbsp;&nbsp; Experience</heading></a>
-          <tr>
-            <td width="15%" valign="center" align="center"><img src="images/mbzuai-img.jpeg" alt="nthu" width="100" height="80"></td>
-            <td width="85%" valign="top">
-              <p>
-                <span><strong>Research Assistant</strong></span><span style="float:right">July. 2022 - July. 2023</span> <br>
-                <em><a href="https://www.dhan.ai/" target="_blank">MBZUAI</a></em>
-                <br>
-                Supervisor: Dr. Salman Khan
-                <br>
-                Research Area: Computer Vision
-
-                <br></br>
-        <br>
-              </p>
-            </td>
-          </tr>
-
-          <tr>
-            <td width="15%" valign="center" align="center"><img src="images/dhan.svg" alt="nthu" width="170" height="80"></td>
-            <td width="85%" valign="top">
-              <p>
-                <span><strong>Machine Learning Engineer</strong></span><span style="float:right">April. 2020 - April. 2022</span> <br>
-                <em><a href="https://mbzuai.ac.ae/research/department/computer-vision-department/" target="_blank">Dhan AI</a></em>
-
-                <br></br>
-        Software:  Pytorch, Python, HF-Transformers, SQL, Tensorflow, Docker.
-        <br>
-              </p>
-            </td>
-          </tr>
-
-          <tr>
-            <td width="15%" valign="center" align="center"><img src="images/cvssp-img.jpeg" alt="nthu" width="100" height="100"></td>
-            <td width="85%" valign="top">
-              <p>
-                <span><strong>Research Assistant</strong></span><span style="float:right">May. 2021 - June. 2022</span> <br>
-                <em><a href="https://www.surrey.ac.uk/centre-vision-speech-signal-processing" target="_blank">CVSSP</a>, University of Surrey</em>
-                <br>
-                Supervisor: Dr. Yi-Zhe Song
-                <br>
-        Research Area: Cross-Modal Image Retrieval, Active Learning for Computer Vision.
-        <br>
-              </p>
-            </td>
-          </tr>
-
-          <tr>
-            <td width="15%" valign="center" align="center"><img src="images/iiit-logo.jpeg" alt="nthu" width="110" height="100"></td>
-            <td width="85%" valign="top">
-              <p>
-                <span><strong>Research Intern</strong></span><span style="float:right">Jun. 2019 - Jan. 2020</span> <br>
-                <em><a href="https://cvit.iiit.ac.in/" target="_blank">CVIT,</a> International Institue of Information Technology</em>
-                <br>
-                Supervisors: <a href="https://ravika.github.io/" target="_blank">Dr. Ravi Kiran Sarvadevabhatla
-</a>
-                <br>
-        Research Area: Document Analysis, Object Detection
-        <br>
-              </p>
-            </td>
-          </tr>
-          <!-- <tr>
-            <td width="15%" valign="center" align="center"><img src="images/cie-logo.jpeg" alt="nthu" width="140" height="110"></td>
-            <td width="85%" valign="top">
-              <p>
-                <span><strong>Product Intern</strong></span><span style="float:right">Dec. 2018 - Dec. 2018</span> <br>
-                <em><a href="https://cie.iiit.ac.in/" target="_blank">Product Labs,</a> International Institue of Information Technology</em>
-                <br>
-                Supervisors: <a href="" target="_blank">Dr. C. V. Jawahar</a> and <a href="" target="_blank">Yalla Veera Prakash
-</a>
-                <br>
-        Software: OpenCV, Tensorflow, Django, SQL, Python
-        <br>
-              </p>
-            </td>
-          </tr> -->
         </table>
-        <br></br>
-        <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
-            <tr>
-            <td style="padding:20px;width:100%;vertical-align:middle">
-              <a id="publication"><heading>Publication</heading></a>
-              <br />
-          </tr>
-        </tbody></table>
-        <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
-          <tr  >
-            <td width="15%" valign="center" align="center">
-              <img src="images/prompt-ir.png" alt="Boundary_png" style="border-style: none" width="150" height="120">
+
+        <!-- Experience Section -->
+        <a id="experience">
+          <heading>Experience</heading>
+        </a>
+        <table class="info-table">
+          <tr>
+            <td width="15%" align="center">
+              <img src="images/mbzuai-img.jpeg" alt="MBZUAI" class="logo-img">
             </td>
-            <td style="padding:20px;width:75%;vertical-align:middle">
-              <!-- <a href="http://jonbarron.info/mipnerf360"> -->
-                <papertitle>PromptIR: Prompting for All-in-One Blind Image Restoration</papertitle>
-              </a>
-              <br>
+            <td width="85%">
+              <p>
+                <strong>Research Assistant</strong>
+                <span style="float:right">July 2022 - July 2023</span><br>
+                <em><a href="https://mbzuai.ac.ae/research/department/computer-vision-department/" target="_blank">MBZUAI</a></em><br>
+                Supervisor: Dr. Salman Khan<br>
+                Research Area: Computer Vision
+              </p>
+            </td>
+          </tr>
+
+          <tr>
+            <td width="15%" align="center">
+              <img src="images/dhan.svg" alt="Dhan AI" class="logo-img">
+            </td>
+            <td width="85%">
+              <p>
+                <strong>Machine Learning Engineer</strong>
+                <span style="float:right">April 2020 - April 2022</span><br>
+                <em><a href="https://www.dhan.ai/" target="_blank">Dhan AI</a></em><br>
+                Software: Pytorch, Python, HF-Transformers, SQL, Tensorflow, Docker
+              </p>
+            </td>
+          </tr>
+
+          <tr>
+            <td width="15%" align="center">
+              <img src="images/cvssp-img.jpeg" alt="CVSSP" class="logo-img">
+            </td>
+            <td width="85%">
+              <p>
+                <strong>Research Assistant</strong>
+                <span style="float:right">May 2021 - June 2022</span><br>
+                <em><a href="https://www.surrey.ac.uk/centre-vision-speech-signal-processing" target="_blank">CVSSP, University of Surrey</a></em><br>
+                Supervisor: Dr. Yi-Zhe Song<br>
+                Research Area: Cross-Modal Image Retrieval, Active Learning for Computer Vision
+              </p>
+            </td>
+          </tr>
+
+          <tr>
+            <td width="15%" align="center">
+              <img src="images/iiit-logo.jpeg" alt="IIIT" class="logo-img">
+            </td>
+            <td width="85%">
+              <p>
+                <strong>Research Intern</strong>
+                <span style="float:right">Jun 2019 - Jan 2020</span><br>
+                <em><a href="https://cvit.iiit.ac.in/" target="_blank">CVIT, IIIT</a></em><br>
+                Supervisors: <a href="https://ravika.github.io/" target="_blank">Dr. Ravi Kiran Sarvadevabhatla</a><br>
+                Research Area: Document Analysis, Object Detection
+              </p>
+            </td>
+          </tr>
+        </table>
+
+        <!-- Publication Section -->
+        <a id="publication">
+          <heading>Publication</heading>
+        </a>
+        <table class="info-table">
+          <tr>
+            <td width="15%" align="center">
+              <img src="images/prompt-ir.png" alt="PromptIR" class="publication-img">
+            </td>
+            <td width="85%">
+              <papertitle>PromptIR: Prompting for All-in-One Blind Image Restoration</papertitle><br>
               <strong>Vaishnav Rao Potlapalli</strong>,
-              Syed Waqas Zamir, 
-              Salman Khan, 
-              Fahad Shahbaz Khan
-              <br>
-              <em>NeurIPS</em>, 2023
-              <br>
-              <p></p>
-              <a href="https://github.com/va1shn9v/PromptIR">Code</a>&nbsp/&nbsp
-              <a href = "https://arxiv.org/abs/2306.13090"> Paper </a>
-              <p></p>
+              Syed Waqas Zamir,
+              Salman Khan,
+              Fahad Shahbaz Khan<br>
+              <em>NeurIPS, 2023</em><br>
+              <a href="https://github.com/va1shn9v/PromptIR">Code</a> /
+              <a href="https://arxiv.org/abs/2306.13090">Paper</a>
             </td>
           </tr>
-          <tr  >
-            <td width="15%" valign="center" align="center">
-              <img src="images/CVPR22_4_1.jpeg" alt="Boundary_png" style="border-style: none" width="150" height="120">
+
+          <tr>
+            <td width="15%" align="center">
+              <img src="images/CVPR22_4_1.jpeg" alt="Sketch3T" class="publication-img">
             </td>
-            <td style="padding:20px;width:75%;vertical-align:middle">
-              <!-- <a href="http://jonbarron.info/mipnerf360"> -->
-                <papertitle>Sketch3T: Test-time Training for Zero-Shot SBIR</papertitle>
-              </a>
-              <br>
-              Aneeshan Sain, 
+            <td width="85%">
+              <papertitle>Sketch3T: Test-time Training for Zero-Shot SBIR</papertitle><br>
+              Aneeshan Sain,
               Ayan Kumar Bhunia,
               <strong>Vaishnav Rao Potlapalli</strong>,
-              Pinaki Nath Chowdhury, 
-              Tao Xiang, 
-              Yi-Zhe Song
-              <br>
-              <em>CVPR</em>, 2022
-              <br>
-              <p></p>
-              <!-- <a href="https://github.com/atmacvit/meditables">Code</a>&nbsp/&nbsp -->
-              <a href = "https://arxiv.org/abs/2203.14691"> Paper </a>
-              <p></p>
+              Pinaki Nath Chowdhury,
+              Tao Xiang,
+              Yi-Zhe Song<br>
+              <em>CVPR, 2022</em><br>
+              <a href="https://arxiv.org/abs/2203.14691">Paper</a>
             </td>
           </tr>
 
-          <tr  >
-            <td width="15%" valign="center" align="center">
-              <img src="images/meditables_img.jpeg" alt="Boundary_png" style="border-style: none" width="150" height="120">
+          <tr>
+            <td width="15%" align="center">
+              <img src="images/meditables_img.jpeg" alt="MediTables" class="publication-img">
             </td>
-            <td style="padding:20px;width:75%;vertical-align:middle">
-              <!-- <a href="http://jonbarron.info/mipnerf360"> -->
-                <papertitle>MediTables: A New Dataset and Deep Network for Multi-Category Table Localization in Medical Documents</papertitle>
-              </a>
-              <br>
+            <td width="85%">
+              <papertitle>
+                MediTables: A New Dataset and Deep Network for Multi-Category Table Localization in Medical Documents
+              </papertitle><br>
               Akshay Deshpande,
               <strong>Vaishnav Rao Potlapalli</strong>,
-              Ravi Kiran Sarvadevabhatla,
-              <br>
-							<em>ICDARW - GREC</em>, 2021
-              <br>
-              <p></p>
-              <a href="https://github.com/atmacvit/meditables">Code</a>&nbsp/&nbsp
-              <a href = "https://link.springer.com/chapter/10.1007/978-3-030-86198-8_9"> Paper </a>
-              <p></p>
+              Ravi Kiran Sarvadevabhatla<br>
+              <em>ICDARW - GREC, 2021</em><br>
+              <a href="https://github.com/atmacvit/meditables">Code</a> /
+              <a href="https://link.springer.com/chapter/10.1007/978-3-030-86198-8_9">Paper</a>
             </td>
-          </tr> 
-           
+          </tr>
+        </table>
 
-        </tbody></table>
-
-    <br></br>
-
-
-		<table width="100%" border="0" cellspacing="15" cellpadding="10">
-    <a id="education"><heading>&nbsp;&nbsp;&nbsp;Education</heading></a>
-    <tr>
-      <td width="15%" valign="center" align="center"><img src="images/nyu.png" alt="nthu" width="110" height="120"></td>
-      <td width="85%" valign="top">
-      <p>
-        <span><strong>Masters of Science </strong></span><span style="float:right">Sep 2023 - Dec 2024</span> <br>
-        <em><a href="www.nyu.edu" target="_blank">New York University</a></em>
-      </p>
-      </td>
-    </tr>
-    <tr>
-      <td width="15%" valign="center" align="center"><img src="images/mec-logo-3.png" alt="nthu" width="112" height="130"></td>
-      <td width="85%" valign="top">
-      <p>
-        <span><strong>Bachelor of Technology(B.Tech) in CSE</strong></span><span style="float:right">August 2016 - May 2020</span> <br>
-        <em><a href="https://www.mahindraecolecentrale.edu.in/" target="_blank">Mahindra University Ecole Centrale School of Engineering</a></em>
-      </p>
-      </td>
-    </tr>
-
-    
-    </table>
-
-
-        <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
+        <!-- Education Section -->
+        <a id="education">
+          <heading>Education</heading>
+        </a>
+        <table class="info-table">
           <tr>
-            <td style="padding:0px">
-              <br>
-              <p style="text-align:left;font-size:small;">
-                  Updated on: 5th October, 2023
-    
-              <span style="float:right;">
-                Thank You, <a href="https://jonbarron.info/" target="_blank">Jon Barron</a>!
-              </span>
-                
+            <td width="15%" align="center">
+              <img src="images/nyu.png" alt="NYU" class="logo-img">
+            </td>
+            <td width="85%">
+              <p>
+                <strong>Master of Science</strong>
+                <span style="float:right">Sep 2023 - Dec 2024</span><br>
+                <em><a href="https://www.nyu.edu" target="_blank">New York University</a></em>
               </p>
             </td>
           </tr>
-        </tbody></table>
+          <tr>
+            <td width="15%" align="center">
+              <img src="images/mec-logo-3.png" alt="MEC" class="logo-img">
+            </td>
+            <td width="85%">
+              <p>
+                <strong>Bachelor of Technology (B.Tech) in CSE</strong>
+                <span style="float:right">Aug 2016 - May 2020</span><br>
+                <em>
+                  <a href="https://www.mahindraecolecentrale.edu.in/" target="_blank">
+                    Mahindra University Ecole Centrale School of Engineering
+                  </a>
+                </em>
+              </p>
+            </td>
+          </tr>
+        </table>
+
+        <!-- Footer -->
+        <p class="footer-note">
+          Updated on: 5th October, 2023
+          <span style="float:right;">
+            Thank You, <a href="https://jonbarron.info/" target="_blank">Jon Barron</a>!
+          </span>
+        </p>
+
       </td>
     </tr>
   </table>
 
+  <!-- jQuery (if needed) -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 </body>
-
 </html>
