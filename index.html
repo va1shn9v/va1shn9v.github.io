@@ -4,120 +4,708 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>vaishnav potlapalli</title>
+    <meta name="description" content="Researcher and engineer — computer vision, AI agents, image restoration." />
+    <meta property="og:title" content="vaishnav potlapalli" />
+    <meta property="og:description" content="Researcher and engineer — computer vision, AI agents, image restoration." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://vaishnavrao.com" />
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>✦</text></svg>" />
 
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,wght@0,300;0,400;0,500;1,300;1,400&family=DM+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet" />
 
     <style>
       :root {
-        --fg: #1b1b1d;
-        --bg: #f6f8ff;      /* soft starfield blue */
-        --accent: #5e72eb;  /* astro-violet */
-        --muted: #6f6f76;
+        --bg: #EFF3F8;
+        --card: #FFFFFF;
+        --fg: #2B3044;
+        --fg-secondary: #6B7189;
+        --fg-dim: #9498AB;
+        --accent: #4E7EC2;
+        --accent-soft: rgba(78,126,194,.10);
+        --accent-hover: #3D6BAD;
+        --border: #D8DDE8;
+        --border-light: #E6EAF0;
+        --serif: 'Newsreader', Georgia, serif;
+        --sans: 'DM Sans', system-ui, sans-serif;
+        --shadow-sm: 0 1px 3px rgba(43,48,68,.06);
+        --shadow-md: 0 4px 16px rgba(43,48,68,.07);
       }
 
-      *{margin:0;padding:0;box-sizing:border-box;}
-      body{
-        font-family:"Space Grotesk",sans-serif;
-        color:var(--fg);
-        background:var(--bg);
-        -webkit-font-smoothing:antialiased;
-        display:flex;justify-content:center;
-        padding:0 1rem 6rem;
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      html { scroll-behavior: smooth; }
+
+      body {
+        font-family: var(--sans);
+        color: var(--fg);
+        background: var(--bg);
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        line-height: 1.65;
+        font-size: 16px;
+        overflow-x: hidden;
       }
-      .wrap{width:100%;max-width:780px;display:flex;flex-direction:column;gap:3.5rem;}
 
-      /* HERO */
-      .hero-container{position:relative;margin-top:3rem;}
-      .hero-img{width:100%;height:260px;border-radius:16px;object-fit:cover;background:#000;box-shadow:0 12px 28px rgba(0,0,0,.08);} 
-      .hero-caption{position:absolute;bottom:14px;right:18px;font-size:.8rem;background:rgba(0,0,0,.45);color:#fff;padding:4px 10px;border-radius:6px;}
+      /* ================================
+         HERO — twilight sky with stars
+         ================================ */
+      .hero {
+        position: relative;
+        width: 100%;
+        height: 420px;
+        overflow: hidden;
+        /* twilight gradient: deep blue-purple at top → soft sky at bottom */
+        background: linear-gradient(
+          180deg,
+          #0F1628 0%,
+          #1B2845 25%,
+          #2E4A6E 45%,
+          #5A7DA8 62%,
+          #8AABC8 75%,
+          #C2D5E6 88%,
+          #E2ECF4 100%
+        );
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
 
-      h1{font-size:2.35rem;font-weight:700;text-transform:lowercase;margin-bottom:.7rem;}
-      h2{font-size:1.1rem;font-weight:600;text-transform:lowercase;margin-bottom:1rem;}
-      p.tagline{font-size:1.1rem;max-width:100%;}
+      .hero canvas {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 1;
+      }
 
-      a{color:var(--accent);text-decoration:none;}
-      a:hover{opacity:.8;}
+      /* Smooth blend into page bg */
+      .hero::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 60px;
+        background: linear-gradient(transparent, var(--bg));
+        z-index: 2;
+        pointer-events: none;
+      }
 
-      .social{display:flex;flex-wrap:wrap;gap:1.2rem;margin-top:1.2rem;font-size:.95rem;}
+      .hero-content {
+        position: relative;
+        z-index: 3;
+        text-align: center;
+        padding: 0 1.5rem;
+        margin-top: 1rem;
+      }
 
-      /* LISTS */
-      ul.plain{list-style:none;padding-left:0;display:flex;flex-direction:column;gap:.55rem;font-size:.97rem;}
-      li{display:block;}
-      .logo{width:22px;height:22px;object-fit:contain;vertical-align:middle;margin-right:.55rem;}
-      .time{color:var(--muted);}  
+      .hero-sanskrit {
+        font-family: var(--serif);
+        font-size: 2.6rem;
+        font-weight: 300;
+        color: #FFFFFF;
+        letter-spacing: .03em;
+        line-height: 1.2;
+        margin-bottom: .6rem;
+        text-shadow: 0 2px 20px rgba(0,0,0,.15);
+      }
 
-      /* PAPERS */
-      .paper{line-height:1.35;}
-      .paper-title{font-size:1rem;line-height:1.35;}
-      .paper-venue{color:var(--muted);margin-left:.4rem;white-space:nowrap;}
-      .paper-authors{font-size:.9rem;}
-      .paper-authors strong{font-weight:600;}
+      .hero-translation {
+        font-family: var(--sans);
+        font-size: .88rem;
+        letter-spacing: .15em;
+        text-transform: uppercase;
+        color: rgba(255,255,255,.55);
+      }
 
-      /* EMBED */
-      .embed-wrapper{position:relative;height:300px;border-radius:16px;overflow:hidden;box-shadow:0 8px 22px rgba(0,0,0,.08);} 
-      .embed-wrapper iframe{position:absolute;inset:0;width:100%;height:100%;border:0;}
+      .hero-source {
+        font-family: var(--serif);
+        font-style: italic;
+        font-size: .82rem;
+        color: rgba(255,255,255,.35);
+        margin-top: .4rem;
+      }
 
-      footer{font-size:.8rem;color:var(--muted);text-align:center;margin-top:3rem;}
+      /* ================================
+         LAYOUT
+         ================================ */
+      .page {
+        position: relative;
+        z-index: 1;
+        max-width: 860px;
+        margin: 0 auto;
+        padding: 0 2rem 5rem;
+      }
 
-      @media(max-width:480px){h1{font-size:1.9rem;} .hero-img{height:200px;} .embed-wrapper{height:260px;}}
+      section { margin-top: 4rem; }
+
+      /* ================================
+         HEADER
+         ================================ */
+      .header {
+        padding-top: 3rem;
+        padding-bottom: 2.5rem;
+        border-bottom: 1px solid var(--border);
+      }
+
+      h1 {
+        font-family: var(--serif);
+        font-size: 2.8rem;
+        font-weight: 400;
+        line-height: 1.1;
+        letter-spacing: -0.02em;
+        color: var(--fg);
+        margin-bottom: 1.1rem;
+      }
+
+      .bio {
+        font-size: .97rem;
+        color: var(--fg-secondary);
+        line-height: 1.8;
+        max-width: 640px;
+      }
+
+      .bio a {
+        color: var(--accent);
+        text-decoration: none;
+        border-bottom: 1px solid var(--border);
+        transition: border-color .2s;
+      }
+      .bio a:hover { border-color: var(--accent); }
+
+      .links {
+        display: flex;
+        flex-wrap: wrap;
+        gap: .5rem;
+        margin-top: 1.5rem;
+      }
+
+      .links a {
+        font-size: .82rem;
+        font-weight: 500;
+        color: var(--fg);
+        text-decoration: none;
+        padding: .42rem .88rem;
+        border: 1px solid var(--border);
+        border-radius: 100px;
+        background: var(--card);
+        transition: all .2s ease;
+        box-shadow: var(--shadow-sm);
+      }
+
+      .links a:hover {
+        border-color: var(--accent);
+        color: var(--accent);
+        box-shadow: var(--shadow-md);
+      }
+
+      /* Status */
+      .status {
+        margin-top: 1.5rem;
+        padding: 1rem 1.25rem;
+        background: var(--accent-soft);
+        border-radius: 10px;
+        border: 1px solid rgba(78,126,194,.12);
+        font-size: .9rem;
+        color: var(--fg-secondary);
+        line-height: 1.65;
+      }
+
+      .status strong { color: var(--accent); font-weight: 600; }
+
+      .status a {
+        color: var(--accent);
+        text-decoration: none;
+        font-weight: 500;
+        border-bottom: 1px solid rgba(78,126,194,.3);
+      }
+      .status a:hover { border-color: var(--accent); }
+
+      /* ================================
+         SECTION HEADINGS
+         ================================ */
+      h2 {
+        font-family: var(--serif);
+        font-size: 1.55rem;
+        font-weight: 400;
+        color: var(--fg);
+        margin-bottom: 1.4rem;
+      }
+
+      /* ================================
+         PAPERS
+         ================================ */
+      .papers-list {
+        display: flex;
+        flex-direction: column;
+        gap: .75rem;
+      }
+
+      .paper {
+        padding: 1.15rem 1.35rem;
+        background: var(--card);
+        border: 1px solid var(--border-light);
+        border-radius: 11px;
+        transition: all .2s ease;
+        box-shadow: var(--shadow-sm);
+      }
+
+      .paper:hover {
+        box-shadow: var(--shadow-md);
+        border-color: var(--border);
+        transform: translateY(-1px);
+      }
+
+      .paper-head {
+        display: flex;
+        align-items: baseline;
+        gap: .55rem;
+        flex-wrap: wrap;
+        margin-bottom: .35rem;
+      }
+
+      .paper-title {
+        font-size: .95rem;
+        font-weight: 600;
+        color: var(--fg);
+        text-decoration: none;
+        line-height: 1.4;
+        transition: color .2s;
+      }
+
+      .paper-title:hover { color: var(--accent); }
+
+      .paper-venue {
+        font-size: .68rem;
+        font-weight: 600;
+        letter-spacing: .05em;
+        text-transform: uppercase;
+        color: var(--accent);
+        background: var(--accent-soft);
+        padding: .18rem .5rem;
+        border-radius: 4px;
+        white-space: nowrap;
+      }
+
+      .paper-authors {
+        font-size: .83rem;
+        color: var(--fg-dim);
+        line-height: 1.5;
+      }
+
+      .paper-authors strong {
+        font-weight: 600;
+        color: var(--fg-secondary);
+      }
+
+      /* ================================
+         SHELF
+         ================================ */
+      .reading-intro {
+        font-size: .95rem;
+        color: var(--fg-secondary);
+        line-height: 1.75;
+        margin-bottom: 1.3rem;
+        max-width: 640px;
+      }
+
+      .shelf {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+        gap: .6rem;
+      }
+
+      .shelf-item {
+        padding: .8rem 1rem;
+        background: var(--card);
+        border: 1px solid var(--border-light);
+        border-radius: 9px;
+        box-shadow: var(--shadow-sm);
+        transition: box-shadow .2s, transform .2s;
+      }
+
+      .shelf-item:hover {
+        box-shadow: var(--shadow-md);
+        transform: translateY(-1px);
+      }
+
+      .shelf-item .title {
+        font-size: .88rem;
+        font-weight: 500;
+        color: var(--fg);
+        line-height: 1.35;
+      }
+
+      .shelf-item .meta {
+        font-size: .78rem;
+        color: var(--fg-dim);
+        margin-top: .15rem;
+      }
+
+      /* ================================
+         BEYOND
+         ================================ */
+      .beyond-text {
+        font-size: .95rem;
+        color: var(--fg-secondary);
+        line-height: 1.8;
+        max-width: 640px;
+      }
+
+      /* ================================
+         FOOTER
+         ================================ */
+      footer {
+        margin-top: 4.5rem;
+        padding-top: 1.8rem;
+        border-top: 1px solid var(--border);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: .8rem;
+      }
+
+      footer p { font-size: .8rem; color: var(--fg-dim); }
+      footer a {
+        font-size: .8rem;
+        color: var(--accent);
+        text-decoration: none;
+        font-weight: 500;
+      }
+      footer a:hover { color: var(--accent-hover); }
+
+      /* ================================
+         FADE-IN
+         ================================ */
+      .fade-in {
+        opacity: 0;
+        transform: translateY(14px);
+        transition: opacity .6s ease, transform .6s ease;
+      }
+      .fade-in.visible { opacity: 1; transform: translateY(0); }
+
+      /* ================================
+         RESPONSIVE
+         ================================ */
+      @media (max-width: 640px) {
+        .hero { height: 320px; }
+        .hero-sanskrit { font-size: 1.8rem; }
+        .hero-translation { font-size: .75rem; }
+        .page { padding: 0 1.25rem 4rem; }
+        h1 { font-size: 2.15rem; }
+        .header { padding-top: 2.2rem; }
+        .shelf { grid-template-columns: 1fr; }
+        section { margin-top: 3rem; }
+      }
     </style>
   </head>
   <body>
-    <main class="wrap">
-      <!-- Reliable GIF banner (constellation mapping) -->
-      <div class="hero-container">
-        <img src="https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExb3Jyd3V5OTY4dHV5MmRkZmJidnhqeGxwNzIzNWllY3ozNzQ0Nmt2bSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/lS7GfvzSVhWOhJKlng/giphy.gif" alt="constellation star map" class="hero-img" />
-        <span class="hero-caption">exploring new frontiers</span>
+
+    <!-- ================================
+         HERO — twilight sky
+         ================================ -->
+    <div class="hero">
+      <canvas id="starfield"></canvas>
+      <div class="hero-content">
+        <div class="hero-sanskrit">चरैवेति चरैवेति</div>
+        <p class="hero-translation">keep going, keep going</p>
+        <p class="hero-source">— Aitareya Brahmana, Rig Veda</p>
+      </div>
+    </div>
+
+    <!-- ================================
+         PAGE
+         ================================ -->
+    <div class="page">
+
+      <div class="header fade-in">
+        <h1>Vaishnav Potlapalli</h1>
+        <p class="bio">
+          Researcher and engineer at the intersection of computer vision, LLMs, and AI agents.
+          M.S. in CS from <a href="https://www.nyu.edu/" target="_blank" rel="noopener">NYU</a>, previously at <a href="https://mbzuai.ac.ae/" target="_blank" rel="noopener">MBZUAI</a> working on image restoration and video retrieval.
+          I care about teaching machines to see, reason about what they see, and act on it.
+        </p>
+
+        <nav class="links">
+          <a href="https://github.com/va1shn9v/">GitHub</a>
+          <a href="https://vaishnav.blog/">Blog</a>
+          <a href="https://twitter.com/__vaishnav">Twitter</a>
+          <a href="https://www.linkedin.com/in/vaishnav-potlapalli/">LinkedIn</a>
+          <a href="data/vaishnav_resume.pdf">Resume</a>
+        </nav>
+
+        <div class="status">
+          <strong>✦ Open to work</strong> — looking for research engineering / applied ML roles in vision-language models, AI agents, or multimodal systems. <a href="mailto:vaishnav@vaishnavrao.com">Let's talk →</a>
+        </div>
       </div>
 
-      <!-- INTRO -->
-      <header>
-        <h1>vaishnav potlapalli</h1>
-        <p class="tagline">building ai agents for content discovery.</p>
-        <p>i work on llms, computer vision &amp; ai agents, love astronomy, dota 2, and all things sci-fi.</p>
-        <nav class="social">
-          <a href="https://github.com/va1shn9v/">github</a>
-          <a href="https://vaishnav.blog/">blog</a>
-          <a href="https://twitter.com/__vaishnav">twitter</a>
-          <a href="https://www.linkedin.com/in/vaishnav-potlapalli/">linkedin</a>
-          <a href="data/vaishnav_resume.pdf">resume</a>
-        </nav>
-      </header>
-
-      <!-- SPACE-THEMED EMBED: live ISS position mini-map -->
-      <!-- <section>
-        <h2>orbital tracker</h2>
-        <div class="embed-wrapper">
-          <iframe src="https://iss-see.live/widget" title="Live ISS tracker" loading="lazy"></iframe>
-        </div>
-      </section> -->
-
-      <!-- EXPERIENCE -->
-      <section>
-        <h2>experience</h2>
-        <ul class="plain">
-          <li><img src="images/sedai.svg" alt="sedai" class="logo" />ml engineer - sedai <span class="time">2025–now</span></li>
-          <li><img src="images/mbzuai-img.jpeg" alt="mbzuai" class="logo" />research assistant — mbzuai <span class="time">2022–2023</span></li>
-        </ul>
-      </section>
-
       <!-- PAPERS -->
-      <section>
-        <h2>selected papers</h2>
-        <ul class="plain">
-          <li class="paper"><a class="paper-title" href="https://arxiv.org/abs/2306.13090">promptir: prompting for all-in-one blind image restoration</a><span class="paper-venue">neurips ’23</span><br /><span class="paper-authors"><strong>Vaishnav Rao Potlapalli</strong>, Syed Waqas Zamir, Salman Khan, Fahad Shahbaz Khan</span></li>
-          <li class="paper"><a class="paper-title" href="https://arxiv.org/abs/2203.14691">sketch3t: test-time training for zero-shot sbir</a><span class="paper-venue">cvpr ’22</span><br /><span class="paper-authors">Aneeshan Sain, Ayan Kumar Bhunia, <strong>Vaishnav Rao Potlapalli</strong>, Pinaki Nath Chowdhury, Tao Xiang, Yi-Zhe Song</span></li>
-          <li class="paper"><a class="paper-title" href="https://link.springer.com/chapter/10.1007/978-3-030-86198-8_9">meditables: dataset &amp; deep network for multi-category table localisation in medical docs</a><span class="paper-venue">icdarw ’21</span><br /><span class="paper-authors">Akshay Deshpande, <strong>Vaishnav Rao Potlapalli</strong>, Ravi Kiran Sarvadevabhatla</span></li>
-        </ul>
+      <section class="fade-in">
+        <h2>Selected Papers</h2>
+        <div class="papers-list">
+
+          <div class="paper">
+            <div class="paper-head">
+              <a class="paper-title" href="https://arxiv.org/abs/2306.13090" target="_blank" rel="noopener">PromptIR: Prompting for All-in-One Blind Image Restoration</a>
+              <span class="paper-venue">NeurIPS '23</span>
+            </div>
+            <div class="paper-authors"><strong>Vaishnav Rao Potlapalli</strong>, Syed Waqas Zamir, Salman Khan, Fahad Shahbaz Khan</div>
+          </div>
+
+          <div class="paper">
+            <div class="paper-head">
+              <a class="paper-title" href="https://openreview.net/forum?id=RqDlk9x3Eg" target="_blank" rel="noopener">CoVR-R: Reason-Aware Composed Video Retrieval</a>
+              <span class="paper-venue">CVPR '26 Findings</span>
+            </div>
+            <div class="paper-authors">Omkar Thawakar, Dmitry Demidov, <strong>Vaishnav Potlapalli</strong>, Sai Prasanna Teja Reddy Bogireddy, Viswanatha Reddy Gajjala, Alaa Mostafa Lasheen, Rao Muhammad Anwer, Fahad Shahbaz Khan</div>
+          </div>
+
+          <div class="paper">
+            <div class="paper-head">
+              <a class="paper-title" href="https://arxiv.org/abs/2506.10751" target="_blank" rel="noopener">Neural at ArchEHR-QA 2025: Agentic Prompt Optimization for Evidence-Grounded Clinical QA</a>
+              <span class="paper-venue">BioNLP '25</span>
+            </div>
+            <div class="paper-authors">Sai Prasanna Teja Reddy Bogireddy, Abrar Majeedi, Viswanath Gajjala, Zhuoyan Xu, Siddhant Rai, <strong>Vaishnav Potlapalli</strong></div>
+          </div>
+
+          <div class="paper">
+            <div class="paper-head">
+              <a class="paper-title" href="https://arxiv.org/abs/2203.14691" target="_blank" rel="noopener">Sketch3T: Test-Time Training for Zero-Shot SBIR</a>
+              <span class="paper-venue">CVPR '22</span>
+            </div>
+            <div class="paper-authors">Aneeshan Sain, Ayan Kumar Bhunia, <strong>Vaishnav Rao Potlapalli</strong>, Pinaki Nath Chowdhury, Tao Xiang, Yi-Zhe Song</div>
+          </div>
+
+          <div class="paper">
+            <div class="paper-head">
+              <a class="paper-title" href="https://link.springer.com/chapter/10.1007/978-3-030-86198-8_9" target="_blank" rel="noopener">MediTables: Dataset &amp; Deep Network for Multi-Category Table Localisation in Medical Docs</a>
+              <span class="paper-venue">ICDARW '21</span>
+            </div>
+            <div class="paper-authors">Akshay Deshpande, <strong>Vaishnav Rao Potlapalli</strong>, Ravi Kiran Sarvadevabhatla</div>
+          </div>
+
+        </div>
       </section>
 
-      <!-- EDUCATION -->
-      <section>
-        <h2>education</h2>
-        <ul class="plain"><li><img src="images/nyu.png" alt="stealth ai" class="logo" />m.s. — new york university <span class="time">2023–2025</span></li></ul>
+      <!-- SHELF -->
+      <section class="fade-in">
+        <h2>Bookshelf &amp; Watchlist</h2>
+        <p class="reading-intro">
+          Some things that shaped how I think — about intelligence, about the universe, about building things. Not a complete list, just what I'd hand someone if they asked what I'm about.
+        </p>
+        <div class="shelf">
+          <div class="shelf-item">
+            <div class="title">Gödel, Escher, Bach</div>
+            <div class="meta">Douglas Hofstadter</div>
+          </div>
+          <div class="shelf-item">
+            <div class="title">The Elegant Universe</div>
+            <div class="meta">Brian Greene</div>
+          </div>
+          <div class="shelf-item">
+            <div class="title">The Three-Body Problem</div>
+            <div class="meta">Liu Cixin</div>
+          </div>
+          <!-- <div class="shelf-item">
+            <div class="title">Interstellar</div>
+            <div class="meta">Christopher Nolan</div>
+          </div> -->
+          <!-- <div class="shelf-item">
+            <div class="title">Arrival</div>
+            <div class="meta">Denis Villeneuve</div>
+          </div> -->
+          <!-- <div class="shelf-item">
+            <div class="title">Distill.pub</div>
+            <div class="meta">Clear thinking about ML</div>
+          </div> -->
+          <div class="shelf-item">
+            <div class="title">The Book of Why</div>
+            <div class="meta">Judea Pearl</div>
+          </div>
+          <!-- <div class="shelf-item">
+            <div class="title">Blade Runner 2049</div>
+            <div class="meta">Denis Villeneuve</div>
+          </div> -->
+        </div>
       </section>
 
-      <footer>updated jul 2025 • still voyaging at lightspeed </footer>
-    </main>
+      <!-- BEYOND -->
+      <section class="fade-in">
+        <h2>Beyond Work</h2>
+        <p class="beyond-text">
+          I'm drawn to questions at the edge of what we know — whether that's the limits of what a model can learn to perceive, or what's actually out there past the heliosphere. I read a lot about astronomy and space exploration. The best sci-fi, to me, uses technology as a lens for asking what it means to be human. I also play Dota 2 — a game that, at its best, is a test of  coordination under uncertainty.
+        </p>
+      </section>
+
+      <footer>
+        <p>Updated Feb 2026</p>
+        <a href="mailto:vaishnav@vaishnavrao.com">say hello →</a>
+      </footer>
+
+    </div>
+
+    <!-- ================================
+         STARFIELD — twilight stars + shooting stars
+         ================================ -->
+    <script>
+      (function() {
+        const canvas = document.getElementById('starfield');
+        const ctx = canvas.getContext('2d');
+        let stars = [], shooters = [];
+        const COUNT = 200;
+        const LINE_DIST = 72;
+
+        function resize() {
+          const dpr = window.devicePixelRatio || 1;
+          const rect = canvas.getBoundingClientRect();
+          canvas.width = rect.width * dpr;
+          canvas.height = rect.height * dpr;
+          ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+        }
+
+        function init() {
+          resize();
+          stars = [];
+          shooters = [];
+          const rect = canvas.getBoundingClientRect();
+          for (let i = 0; i < COUNT; i++) {
+            const y = Math.random() * rect.height;
+            // Stars are brighter near top (darker sky), dimmer near bottom
+            const heightFactor = 1 - (y / rect.height);
+            stars.push({
+              x: Math.random() * rect.width,
+              y: y,
+              r: Math.random() * 1.4 + 0.3,
+              vx: (Math.random() - 0.5) * 0.06,
+              vy: (Math.random() - 0.5) * 0.04,
+              baseAlpha: (Math.random() * 0.4 + 0.15) * Math.pow(heightFactor, 0.6),
+              ts: Math.random() * 0.006 + 0.001,
+              tp: Math.random() * Math.PI * 2,
+              // Color varies: whites, pale blues, some warm
+              hue: Math.random() < 0.7 ? 210 + Math.random() * 30 : 30 + Math.random() * 20,
+              sat: Math.random() * 20 + 10
+            });
+          }
+        }
+
+        function spawnShooter() {
+          const rect = canvas.getBoundingClientRect();
+          // Only in top 60% of canvas
+          const startY = Math.random() * rect.height * 0.5;
+          const angle = Math.PI * 0.15 + Math.random() * Math.PI * 0.15; // ~25-55 deg
+          const speed = 2.5 + Math.random() * 3;
+          shooters.push({
+            x: Math.random() * rect.width * 0.8,
+            y: startY,
+            vx: Math.cos(angle) * speed,
+            vy: Math.sin(angle) * speed,
+            life: 1,
+            decay: 0.015 + Math.random() * 0.01,
+            len: 40 + Math.random() * 60
+          });
+        }
+
+        function draw(t) {
+          const rect = canvas.getBoundingClientRect();
+          const cw = rect.width, ch = rect.height;
+          ctx.clearRect(0, 0, cw, ch);
+
+          // Move stars
+          for (const s of stars) {
+            s.x += s.vx;
+            s.y += s.vy;
+            if (s.x < -4) s.x = cw + 4;
+            if (s.x > cw + 4) s.x = -4;
+            if (s.y < -4) s.y = ch + 4;
+            if (s.y > ch + 4) s.y = -4;
+            s.ca = s.baseAlpha + Math.sin(t * s.ts + s.tp) * 0.12;
+          }
+
+          // Constellation lines — faint, only in upper half
+          for (let i = 0; i < stars.length; i++) {
+            if (stars[i].y > ch * 0.6) continue;
+            for (let j = i + 1; j < stars.length; j++) {
+              if (stars[j].y > ch * 0.6) continue;
+              const dx = stars[i].x - stars[j].x;
+              const dy = stars[i].y - stars[j].y;
+              const dist = Math.sqrt(dx * dx + dy * dy);
+              if (dist < LINE_DIST) {
+                const a = (1 - dist / LINE_DIST) * 0.07;
+                ctx.beginPath();
+                ctx.moveTo(stars[i].x, stars[i].y);
+                ctx.lineTo(stars[j].x, stars[j].y);
+                ctx.strokeStyle = `rgba(180, 200, 230, ${a})`;
+                ctx.lineWidth = 0.5;
+                ctx.stroke();
+              }
+            }
+          }
+
+          // Stars
+          for (const s of stars) {
+            if (s.ca <= 0) continue;
+            ctx.beginPath();
+            ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
+            ctx.fillStyle = `hsla(${s.hue}, ${s.sat}%, 92%, ${s.ca})`;
+            ctx.fill();
+            // Glow on brighter stars
+            if (s.ca > 0.3 && s.r > 0.9) {
+              ctx.beginPath();
+              ctx.arc(s.x, s.y, s.r * 2.5, 0, Math.PI * 2);
+              ctx.fillStyle = `hsla(${s.hue}, ${s.sat}%, 92%, ${s.ca * 0.12})`;
+              ctx.fill();
+            }
+          }
+
+          // Shooting stars
+          if (Math.random() < 0.004) spawnShooter();
+
+          for (let i = shooters.length - 1; i >= 0; i--) {
+            const sh = shooters[i];
+            sh.x += sh.vx;
+            sh.y += sh.vy;
+            sh.life -= sh.decay;
+
+            if (sh.life <= 0) {
+              shooters.splice(i, 1);
+              continue;
+            }
+
+            const tailX = sh.x - sh.vx * (sh.len / Math.sqrt(sh.vx * sh.vx + sh.vy * sh.vy));
+            const tailY = sh.y - sh.vy * (sh.len / Math.sqrt(sh.vx * sh.vx + sh.vy * sh.vy));
+
+            const grad = ctx.createLinearGradient(tailX, tailY, sh.x, sh.y);
+            grad.addColorStop(0, `rgba(255,255,255,0)`);
+            grad.addColorStop(1, `rgba(220,230,255,${sh.life * 0.6})`);
+
+            ctx.beginPath();
+            ctx.moveTo(tailX, tailY);
+            ctx.lineTo(sh.x, sh.y);
+            ctx.strokeStyle = grad;
+            ctx.lineWidth = 1.2;
+            ctx.stroke();
+
+            // Bright head
+            ctx.beginPath();
+            ctx.arc(sh.x, sh.y, 1.2, 0, Math.PI * 2);
+            ctx.fillStyle = `rgba(255,255,255,${sh.life * 0.7})`;
+            ctx.fill();
+          }
+
+          requestAnimationFrame(draw);
+        }
+
+        window.addEventListener('resize', () => { resize(); });
+        init();
+        requestAnimationFrame(draw);
+      })();
+
+      // Fade-in
+      const obs = new IntersectionObserver((entries) => {
+        entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+      }, { threshold: 0.05 });
+      document.querySelectorAll('.fade-in').forEach(el => obs.observe(el));
+    </script>
+
   </body>
 </html>
