@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hello World — Vaishnav Potlapalli</title>
+  <meta name="description" content="A first post to test the blog." />
+  <meta property="og:title" content="Hello World" />
+  <meta property="og:description" content="A first post to test the blog." />
+  <meta property="og:type" content="article" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>✦</text></svg>" />
+  <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,wght@0,300;0,400;0,500;1,300;1,400&family=DM+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/styles/github.min.css" />
+  <style>
+    :root {
+      --bg: #EFF3F8;
+      --card: #FFFFFF;
+      --fg: #2B3044;
+      --fg-secondary: #6B7189;
+      --fg-dim: #9498AB;
+      --accent: #4E7EC2;
+      --accent-soft: rgba(78,126,194,.10);
+      --accent-hover: #3D6BAD;
+      --border: #D8DDE8;
+      --border-light: #E6EAF0;
+      --serif: 'Newsreader', Georgia, serif;
+      --sans: 'DM Sans', system-ui, sans-serif;
+      --shadow-sm: 0 1px 3px rgba(43,48,68,.06);
+      --shadow-md: 0 4px 16px rgba(43,48,68,.07);
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: var(--sans);
+      color: var(--fg);
+      background: var(--bg);
+      -webkit-font-smoothing: antialiased;
+      line-height: 1.65;
+      font-size: 16px;
+    }
+    .nav {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 1.5rem 2rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      font-size: .85rem;
+    }
+    .nav a {
+      color: var(--fg-dim);
+      text-decoration: none;
+      transition: color .2s;
+    }
+    .nav a:hover { color: var(--accent); }
+    .nav .sep { color: var(--border); }
+    article {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 0 2rem 5rem;
+    }
+    article header { margin-bottom: 2.5rem; padding-bottom: 1.5rem; border-bottom: 1px solid var(--border); }
+    article header h1 {
+      font-family: var(--serif);
+      font-size: 2.4rem;
+      font-weight: 400;
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+      margin-bottom: .5rem;
+    }
+    article header time {
+      font-size: .85rem;
+      color: var(--fg-dim);
+    }
+    .prose h2 { font-family: var(--serif); font-size: 1.5rem; font-weight: 400; margin: 2.5rem 0 1rem; }
+    .prose h3 { font-family: var(--serif); font-size: 1.2rem; font-weight: 500; margin: 2rem 0 .8rem; }
+    .prose p { margin-bottom: 1.2rem; line-height: 1.8; color: var(--fg-secondary); }
+    .prose a { color: var(--accent); text-decoration: none; border-bottom: 1px solid var(--border); transition: border-color .2s; }
+    .prose a:hover { border-color: var(--accent); }
+    .prose strong { color: var(--fg); font-weight: 600; }
+    .prose img { max-width: 100%; height: auto; border-radius: 8px; margin: 1.5rem 0; }
+    .prose blockquote {
+      border-left: 3px solid var(--accent);
+      padding: .8rem 1.2rem;
+      margin: 1.5rem 0;
+      background: var(--accent-soft);
+      border-radius: 0 8px 8px 0;
+    }
+    .prose blockquote p { margin-bottom: 0; color: var(--fg-secondary); }
+    .prose ul, .prose ol { margin: 1rem 0 1.2rem 1.5rem; color: var(--fg-secondary); }
+    .prose li { margin-bottom: .4rem; line-height: 1.7; }
+    .prose code {
+      font-size: .88em;
+      background: var(--accent-soft);
+      padding: .15em .4em;
+      border-radius: 4px;
+      color: var(--fg);
+    }
+    .prose pre {
+      margin: 1.5rem 0;
+      padding: 1.2rem 1.4rem;
+      background: var(--card);
+      border: 1px solid var(--border-light);
+      border-radius: 10px;
+      overflow-x: auto;
+      box-shadow: var(--shadow-sm);
+    }
+    .prose pre code {
+      background: none;
+      padding: 0;
+      font-size: .85rem;
+      line-height: 1.6;
+    }
+    .prose hr { border: none; border-top: 1px solid var(--border); margin: 2.5rem 0; }
+    .prose table { width: 100%; border-collapse: collapse; margin: 1.5rem 0; font-size: .9rem; }
+    .prose th, .prose td { padding: .6rem .8rem; border: 1px solid var(--border-light); text-align: left; }
+    .prose th { background: var(--accent-soft); font-weight: 600; color: var(--fg); }
+    footer {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 1.8rem 2rem;
+      border-top: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: .8rem;
+    }
+    footer p { font-size: .8rem; color: var(--fg-dim); }
+    footer a { font-size: .8rem; color: var(--accent); text-decoration: none; font-weight: 500; }
+    footer a:hover { color: var(--accent-hover); }
+    @media (max-width: 640px) {
+      article { padding: 0 1.25rem 4rem; }
+      article header h1 { font-size: 1.8rem; }
+      .nav { padding: 1.2rem 1.25rem; }
+    }
+  </style>
+</head>
+<body>
+  <nav class="nav">
+    <a href="/">Vaishnav Potlapalli</a>
+    <span class="sep">/</span>
+    <a href="/blog/">Blog</a>
+  </nav>
+  <article>
+    <header>
+      <h1>Hello World</h1>
+      <time datetime="2026-03-02">March 2, 2026</time>
+    </header>
+    <div class="prose"><p>This is the first post on this blog. It&#39;s a test to make sure everything works — Markdown rendering, code blocks, typography, and the overall layout.</p>
+<h2>Why build a blog from scratch?</h2>
+<p>Most static site generators come with a lot of machinery. Jekyll, Hugo, Gatsby — they&#39;re powerful, but for a simple personal blog they feel like bringing a crane to hang a picture frame.</p>
+<p>This blog is powered by a single <a href="https://bun.sh">Bun</a> script (~80 lines) that reads Markdown files from a <code>posts/</code> directory, converts them to HTML using <code>marked</code>, and writes static pages into <code>blog/</code>. That&#39;s it.</p>
+<h2>What Markdown features are supported?</h2>
+<p>Pretty much everything you&#39;d expect:</p>
+<ul>
+<li><strong>Bold</strong> and <em>italic</em> text</li>
+<li><a href="https://vaishnavrao.com">Links</a> that go places</li>
+<li>Inline <code>code</code> for quick references</li>
+<li>Images, tables, blockquotes</li>
+</ul>
+<blockquote>
+<p>&quot;The best writing tools are the ones that disappear.&quot;</p>
+</blockquote>
+<h3>Code blocks</h3>
+<pre><code class="language-python">def hello():
+    print(&quot;Hello from the blog!&quot;)
+
+for i in range(3):
+    hello()
+</code></pre>
+<h3>Lists</h3>
+<ol>
+<li>Write a <code>.md</code> file in <code>posts/</code></li>
+<li>Run <code>bun run build</code></li>
+<li>Push to GitHub</li>
+<li>Done</li>
+</ol>
+<hr>
+<p>That&#39;s all there is to it.</p>
+</div>
+  </article>
+  <footer>
+    <p><a href="/blog/">← All posts</a></p>
+    <a href="mailto:vaishnav@vaishnavrao.com">say hello →</a>
+  </footer>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/highlight.min.js"></script>
+  <script>hljs.highlightAll();</script>
+</body>
+</html>

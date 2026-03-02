@@ -1,0 +1,11 @@
+{
+  "name": "vaishnavrao.com",
+  "private": true,
+  "scripts": {
+    "build": "bun run build.ts",
+    "preview": "bun run build.ts && bun run serve.ts"
+  },
+  "dependencies": {
+    "marked": "^15.0.7"
+  }
+}
