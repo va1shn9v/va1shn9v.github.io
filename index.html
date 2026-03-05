@@ -4,31 +4,35 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>vaishnav potlapalli</title>
-    <meta name="description" content="Researcher and engineer — computer vision, AI agents, image restoration." />
+    <meta name="description" content="Software Engineer at Sedai — LLMs, AI agents, computer vision. M.S. from NYU Courant. Published at NeurIPS, CVPR." />
     <meta property="og:title" content="vaishnav potlapalli" />
-    <meta property="og:description" content="Researcher and engineer — computer vision, AI agents, image restoration." />
+    <meta property="og:description" content="Software Engineer at Sedai — LLM routing, AI agents, computer vision. M.S. from NYU Courant. Published at NeurIPS, CVPR." />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://vaishnavrao.com" />
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>✦</text></svg>" />
 
-    <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,wght@0,300;0,400;0,500;1,300;1,400&family=DM+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet" />
 
     <style>
       :root {
-        --bg: #F7F8FB;
-        --card: #FFFFFF;
-        --fg: #1E2330;
-        --fg-secondary: #5A6070;
-        --fg-dim: #8B90A0;
-        --accent: #C67B52;
-        --accent-soft: rgba(198,123,82,.06);
-        --accent-hover: #B56D46;
-        --border: #E2E4EB;
-        --border-light: #EEEFF3;
-        --serif: 'Newsreader', Georgia, serif;
-        --sans: 'DM Sans', system-ui, sans-serif;
-        --shadow-sm: 0 1px 4px rgba(30,35,48,.04);
-        --shadow-md: 0 8px 28px rgba(30,35,48,.07);
+        --bg: #F4F1EB;
+        --bg-warm: #EDE9E0;
+        --card-bg: rgba(255,253,248,0.55);
+        --card-border: rgba(168,155,130,0.18);
+        --card-hover: rgba(255,253,248,0.85);
+        --fg: #2C2F26;
+        --fg-secondary: #5C5F52;
+        --fg-dim: #8A8D7E;
+        --accent: #B8860B;
+        --accent-soft: rgba(184,134,11,0.08);
+        --accent-hover: #9A7209;
+        --green-deep: #3A4A32;
+        --green-mid: #5A6B4F;
+        --green-soft: rgba(90,107,79,0.08);
+        --green-border: rgba(90,107,79,0.15);
+        --warm-shadow: rgba(80,70,45,0.08);
+        --serif: 'Libre Baskerville', Georgia, serif;
+        --sans: 'Outfit', system-ui, sans-serif;
       }
 
       * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -46,63 +50,66 @@
       }
 
       /* ================================
-         HERO — twilight sky with stars
+         AMBIENT BACKGROUND
          ================================ */
-      .hero {
-        position: relative;
-        width: 100%;
-        height: 220px;
-        overflow: hidden;
-        background: linear-gradient(
-          180deg,
-          #0D1220 0%,
-          #152038 18%,
-          #223A5C 34%,
-          #3E6088 48%,
-          #6A8CAC 60%,
-          #94B0CA 72%,
-          #BFD0E0 84%,
-          #DDE4ED 93%,
-          #F7F8FB 100%
-        );
-      }
-
-      .hero canvas {
-        position: absolute;
-        inset: 0;
-        width: 100%;
-        height: 100%;
-        z-index: 1;
-      }
-
-      /* Smooth blend into page bg */
-      .hero::after {
-        content: '';
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        right: 0;
-        height: 60px;
-        background: linear-gradient(transparent, var(--bg));
-        z-index: 2;
+      .ambient {
+        position: fixed;
+        top: 0; left: 0; right: 0; bottom: 0;
+        z-index: 0;
         pointer-events: none;
+        overflow: hidden;
       }
 
-      .bio-motto {
-        font-family: var(--serif);
-        font-style: italic;
-        font-size: .9rem;
-        color: var(--fg-dim);
-        margin-top: .8rem;
-        letter-spacing: .01em;
-        line-height: 1.6;
+      .ambient-orb {
+        position: absolute;
+        border-radius: 50%;
+        filter: blur(120px);
+        opacity: 0.35;
+        animation: drift 25s ease-in-out infinite alternate;
       }
 
-      .bio-motto span {
-        font-family: var(--sans);
-        font-style: normal;
-        font-size: .82rem;
-        letter-spacing: .02em;
+      .ambient-orb:nth-child(1) {
+        width: 600px; height: 600px;
+        background: radial-gradient(circle, #D4C98A 0%, transparent 70%);
+        top: -10%; right: -5%;
+        animation-delay: 0s;
+      }
+
+      .ambient-orb:nth-child(2) {
+        width: 500px; height: 500px;
+        background: radial-gradient(circle, #A3B88C 0%, transparent 70%);
+        bottom: 10%; left: -8%;
+        animation-delay: -8s;
+        animation-duration: 30s;
+      }
+
+      .ambient-orb:nth-child(3) {
+        width: 400px; height: 400px;
+        background: radial-gradient(circle, #E8D5A3 0%, transparent 70%);
+        top: 40%; right: 20%;
+        animation-delay: -15s;
+        animation-duration: 22s;
+        opacity: 0.2;
+      }
+
+      @keyframes drift {
+        0% { transform: translate(0, 0) scale(1); }
+        33% { transform: translate(30px, -20px) scale(1.05); }
+        66% { transform: translate(-20px, 15px) scale(0.97); }
+        100% { transform: translate(15px, -10px) scale(1.02); }
+      }
+
+      /* Grain overlay */
+      body::before {
+        content: '';
+        position: fixed;
+        top: 0; left: 0; right: 0; bottom: 0;
+        z-index: 1;
+        pointer-events: none;
+        opacity: 0.025;
+        background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+        background-repeat: repeat;
+        background-size: 256px 256px;
       }
 
       /* ================================
@@ -110,181 +117,349 @@
          ================================ */
       .page {
         position: relative;
-        z-index: 1;
-        max-width: 1060px;
+        z-index: 2;
+        max-width: 1200px;
         margin: 0 auto;
-        padding: 0 2.5rem 5rem;
+        padding: 0 3rem 6rem;
       }
-
-      section { margin-top: 4rem; }
 
       /* ================================
-         HEADER
+         TOP NAV
          ================================ */
-      .header {
-        padding-top: 3rem;
-        padding-bottom: 2.5rem;
-        border-bottom: 1px solid var(--border);
+      .topnav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1.8rem 0;
+        border-bottom: 1px solid var(--card-border);
+      }
+
+      .topnav-name {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        font-family: var(--sans);
+        font-size: 0.85rem;
+        font-weight: 500;
+        color: var(--green-deep);
+        letter-spacing: 0.02em;
+        text-decoration: none;
+      }
+
+      .topnav-star {
+        width: 22px;
+        height: 22px;
+        position: relative;
+        animation: spin-slow 8s linear infinite;
+      }
+
+      .topnav-star::before,
+      .topnav-star::after {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: var(--accent);
+        clip-path: polygon(50% 0%, 62% 38%, 100% 50%, 62% 62%, 50% 100%, 38% 62%, 0% 50%, 38% 38%);
+      }
+
+      .topnav-star::after {
+        transform: rotate(45deg);
+        opacity: 0.5;
+      }
+
+      @keyframes spin-slow {
+        from { transform: rotate(0deg); }
+        to { transform: rotate(360deg); }
+      }
+
+      .topnav-links {
+        display: flex;
+        gap: 1.8rem;
+        align-items: center;
+      }
+
+      .topnav-links a {
+        font-size: 0.82rem;
+        font-weight: 500;
+        color: var(--fg-dim);
+        text-decoration: none;
+        letter-spacing: 0.03em;
+        transition: color 0.2s;
+      }
+      .topnav-links a:hover { color: var(--accent); }
+
+      /* ================================
+         HERO SECTION — asymmetric
+         ================================ */
+      .hero {
         display: grid;
-        grid-template-columns: 1fr auto;
-        gap: 2.5rem;
-        align-items: start;
+        grid-template-columns: 1fr 340px;
+        gap: 4rem;
+        align-items: center;
+        padding-top: 5rem;
+        padding-bottom: 4rem;
+        min-height: auto;
       }
 
-      .header-text {
-        min-width: 0;
-      }
-
-      .header-photo {
-        width: 220px;
-        height: 270px;
-        border-radius: 14px;
-        object-fit: cover;
-        box-shadow: 0 6px 24px rgba(30,35,48,.10);
-        border: 3px solid var(--border-light);
-        flex-shrink: 0;
-        margin-top: .5rem;
+      .hero-text {
       }
 
       h1 {
         font-family: var(--serif);
         font-size: 2.8rem;
         font-weight: 400;
-        line-height: 1.1;
+        line-height: 1.12;
         letter-spacing: -0.02em;
-        color: var(--fg);
-        margin-bottom: 1.1rem;
+        color: var(--green-deep);
+        margin-bottom: 1.4rem;
+        opacity: 0;
+        animation: fadeUp 0.8s ease forwards 0.2s;
       }
 
-      .bio {
-        font-size: .97rem;
+      .hero-bio {
+        font-size: 1.02rem;
         color: var(--fg-secondary);
-        line-height: 1.8;
+        line-height: 1.85;
+        max-width: 580px;
+        opacity: 0;
+        animation: fadeUp 0.8s ease forwards 0.35s;
       }
 
-      .bio a {
+      .hero-bio a {
         color: var(--accent);
         text-decoration: none;
-        border-bottom: 1px solid var(--border);
-        transition: border-color .2s;
+        border-bottom: 1px solid rgba(184,134,11,0.25);
+        transition: border-color 0.2s;
       }
-      .bio a:hover { border-color: var(--accent); }
+      .hero-bio a:hover { border-color: var(--accent); }
 
-      .links {
+      .hero-bio p + p { margin-top: 1rem; }
+
+      .hero-motto {
+        margin-top: 1.4rem;
+        opacity: 0;
+        animation: fadeUp 0.8s ease forwards 0.45s;
+      }
+
+      .motto-telugu {
+        font-family: var(--serif);
+        font-size: 1.05rem;
+        font-weight: 400;
+        color: var(--green-deep);
+        letter-spacing: 0.02em;
+      }
+
+      .motto-context {
+        font-family: var(--sans);
+        font-style: italic;
+        font-size: 0.84rem;
+        color: var(--fg-dim);
+        line-height: 1.7;
+      }
+
+      .hero-cta {
         display: flex;
+        gap: 0.6rem;
+        margin-top: 2.2rem;
         flex-wrap: wrap;
-        gap: .5rem;
-        margin-top: 1.5rem;
+        opacity: 0;
+        animation: fadeUp 0.8s ease forwards 0.55s;
       }
 
-      .links a {
-        font-size: .82rem;
+      .hero-cta a {
+        font-size: 0.82rem;
         font-weight: 500;
         color: var(--fg);
         text-decoration: none;
-        padding: .42rem .88rem;
-        border: 1px solid var(--border);
-        border-radius: 100px;
-        background: var(--card);
-        transition: all .2s ease;
-        box-shadow: var(--shadow-sm);
+        padding: 0.5rem 1.1rem;
+        border: 1px solid var(--card-border);
+        border-radius: 8px;
+        background: var(--card-bg);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        transition: all 0.25s ease;
       }
 
-      .links a:hover {
+      .hero-cta a:hover {
         border-color: var(--accent);
         color: var(--accent);
-        box-shadow: var(--shadow-md);
+        background: var(--card-hover);
+        transform: translateY(-1px);
+        box-shadow: 0 4px 16px var(--warm-shadow);
       }
 
-      /* Status */
-      .status {
-        margin-top: 1.5rem;
-        padding: 1rem 1.25rem;
-        background: var(--accent-soft);
-        border-radius: 10px;
-        border: 1px solid rgba(198,123,82,.12);
-        font-size: .9rem;
+      .hero-cta a.primary {
+        background: var(--green-deep);
+        color: #F4F1EB;
+        border-color: var(--green-deep);
+      }
+      .hero-cta a.primary:hover {
+        background: var(--green-mid);
+        border-color: var(--green-mid);
+        color: #fff;
+      }
+
+      /* Photo */
+      .hero-photo-wrap {
+        position: relative;
+        opacity: 0;
+        animation: fadeUp 0.9s ease forwards 0.5s;
+        align-self: start;
+        margin-top: -0.5rem;
+      }
+
+      .hero-photo {
+        width: 100%;
+        aspect-ratio: 3/4;
+        object-fit: cover;
+        border-radius: 20px;
+        box-shadow: 0 20px 60px rgba(60,55,40,0.15), 0 4px 16px rgba(60,55,40,0.08);
+      }
+
+      .hero-photo-accent {
+        position: absolute;
+        top: -12px;
+        right: -12px;
+        width: 80px;
+        height: 80px;
+        border-radius: 50%;
+        background: radial-gradient(circle, rgba(184,134,11,0.15) 0%, transparent 70%);
+        filter: blur(2px);
+        z-index: -1;
+      }
+
+      /* Status bar */
+      .status-bar {
+        margin-top: 3rem;
+        padding: 1.1rem 1.5rem;
+        background: var(--green-soft);
+        border: 1px solid var(--green-border);
+        border-radius: 12px;
+        font-size: 0.88rem;
         color: var(--fg-secondary);
         line-height: 1.65;
+        display: flex;
+        align-items: flex-start;
+        gap: 0.8rem;
+        opacity: 0;
+        animation: fadeUp 0.8s ease forwards 0.65s;
       }
 
-      .status strong { color: var(--accent); font-weight: 600; }
+      .status-dot {
+        width: 8px; height: 8px;
+        border-radius: 50%;
+        background: var(--accent);
+        flex-shrink: 0;
+        margin-top: 6px;
+        animation: pulse 2s ease-in-out infinite;
+      }
 
-      .status a {
+      @keyframes pulse {
+        0%, 100% { opacity: 1; box-shadow: 0 0 0 0 rgba(184,134,11,0.3); }
+        50% { opacity: 0.7; box-shadow: 0 0 0 6px rgba(184,134,11,0); }
+      }
+
+      .status-bar strong { color: var(--green-deep); font-weight: 600; }
+      .status-bar a {
         color: var(--accent);
         text-decoration: none;
         font-weight: 500;
-        border-bottom: 1px solid rgba(198,123,82,.25);
       }
-      .status a:hover { border-color: var(--accent); }
+      .status-bar a:hover { text-decoration: underline; }
 
       /* ================================
          SECTION HEADINGS
          ================================ */
+      section {
+        margin-top: 6rem;
+      }
+
+      .section-label {
+        font-size: 0.72rem;
+        font-weight: 600;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: var(--fg-dim);
+        margin-bottom: 0.6rem;
+      }
+
       h2 {
         font-family: var(--serif);
-        font-size: 1.55rem;
+        font-size: 1.9rem;
         font-weight: 400;
-        color: var(--fg);
-        margin-bottom: 1.4rem;
+        color: var(--green-deep);
+        margin-bottom: 2rem;
+        letter-spacing: -0.015em;
       }
 
       /* ================================
-         PAPERS
+         PAPERS — blended, with links
          ================================ */
       .papers-list {
         display: flex;
         flex-direction: column;
-        gap: .85rem;
+        gap: 1px;
+        background: var(--card-border);
+        border-radius: 16px;
+        overflow: hidden;
       }
 
       .paper {
-        padding: 1.35rem 1.5rem;
-        background: var(--card);
-        border-radius: 12px;
-        transition: box-shadow .25s ease, transform .25s ease;
-        box-shadow: var(--shadow-sm);
+        padding: 1.8rem 2rem;
+        background: var(--card-bg);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        transition: background 0.3s ease;
+        display: grid;
+        grid-template-columns: auto 1fr;
+        grid-template-rows: auto auto auto;
+        gap: 0 1.5rem;
       }
 
       .paper:hover {
-        box-shadow: var(--shadow-md);
-        transform: translateY(-2px);
+        background: var(--card-hover);
       }
 
-      .paper-head {
-        display: flex;
-        align-items: baseline;
-        gap: .6rem;
-        flex-wrap: wrap;
-        margin-bottom: .4rem;
+      .paper-venue {
+        font-size: 0.65rem;
+        font-weight: 600;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: var(--green-deep);
+        background: var(--green-soft);
+        border: 1px solid var(--green-border);
+        padding: 0.2rem 0.6rem;
+        border-radius: 5px;
+        width: fit-content;
+        height: fit-content;
+        white-space: nowrap;
+        grid-row: 1;
+        grid-column: 1;
+        margin-top: 0.15rem;
+      }
+
+      .paper-body {
+        grid-column: 2;
+        grid-row: 1;
+        min-width: 0;
       }
 
       .paper-title {
         font-family: var(--serif);
-        font-size: 1.02rem;
+        font-size: 1rem;
         font-weight: 400;
         color: var(--fg);
         text-decoration: none;
-        line-height: 1.4;
-        transition: color .2s;
+        line-height: 1.45;
+        transition: color 0.2s;
+        display: block;
+        margin-bottom: 0.5rem;
       }
 
       .paper-title:hover { color: var(--accent); }
 
-      .paper-venue {
-        font-size: .65rem;
-        font-weight: 600;
-        letter-spacing: .06em;
-        text-transform: uppercase;
-        color: #FFFFFF;
-        background: var(--accent);
-        padding: .2rem .55rem;
-        border-radius: 4px;
-        white-space: nowrap;
-      }
-
       .paper-authors {
-        font-size: .82rem;
+        font-size: 0.78rem;
         color: var(--fg-dim);
         line-height: 1.55;
       }
@@ -295,438 +470,502 @@
       }
 
       .paper-desc {
-        font-size: .84rem;
+        font-size: 0.82rem;
         color: var(--fg-dim);
-        line-height: 1.6;
-        margin-top: .45rem;
+        line-height: 1.65;
+        margin-top: 0.5rem;
+      }
+
+      .paper-links {
+        display: flex;
+        gap: 0.5rem;
+        margin-top: 1rem;
+        padding-top: 0.8rem;
+        border-top: 1px solid var(--card-border);
+        flex-wrap: wrap;
+      }
+
+      .paper-link {
+        font-size: 0.72rem;
+        font-weight: 500;
+        color: var(--fg-dim);
+        text-decoration: none;
+        padding: 0.3rem 0.7rem;
+        border-radius: 6px;
+        background: rgba(0,0,0,0.03);
+        transition: all 0.2s;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.3rem;
+      }
+
+      .paper-link:hover {
+        color: var(--accent);
+        background: var(--accent-soft);
+      }
+
+      .paper-link svg {
+        width: 12px;
+        height: 12px;
       }
 
       /* ================================
-         SHELF
+         BEYOND WORK — side-by-side
          ================================ */
-      .reading-intro {
-        font-size: .95rem;
-        color: var(--fg-secondary);
-        line-height: 1.75;
-        margin-bottom: 1.3rem;
-      }
-
-      .shelf {
+      .beyond-grid {
         display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
-        gap: .75rem;
+        grid-template-columns: 1fr 1fr;
+        gap: 3rem;
+        align-items: start;
       }
 
-      .shelf-item {
-        padding: 1rem 1.2rem;
-        background: var(--card);
-        border-radius: 10px;
-        box-shadow: var(--shadow-sm);
-        transition: box-shadow .25s ease, transform .25s ease;
+      .beyond-text {
+        font-size: 0.95rem;
+        color: var(--fg-secondary);
+        line-height: 1.85;
       }
 
-      .shelf-item:hover {
-        box-shadow: var(--shadow-md);
-        transform: translateY(-2px);
+      .beyond-aside {
+        padding: 1.8rem 2rem;
+        background: var(--card-bg);
+        border: 1px solid var(--card-border);
+        border-radius: 14px;
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
       }
 
-      .shelf-item .title {
+      .beyond-aside-title {
         font-family: var(--serif);
         font-style: italic;
-        font-size: .92rem;
-        font-weight: 400;
+        font-size: 0.9rem;
         color: var(--fg);
-        line-height: 1.35;
+        margin-bottom: 0.8rem;
       }
 
-      .shelf-item .meta {
-        font-size: .76rem;
+      .interest-tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.4rem;
+      }
+
+      .interest-tag {
+        font-size: 0.75rem;
+        font-weight: 400;
         color: var(--fg-dim);
-        margin-top: .25rem;
-        letter-spacing: .02em;
+        padding: 0.35rem 0.75rem;
+        border-radius: 20px;
+        border: 1px solid var(--card-border);
+        background: transparent;
+        transition: all 0.2s;
+      }
+
+      .interest-tag:hover {
+        border-color: var(--green-border);
+        background: var(--green-soft);
+        color: var(--green-deep);
       }
 
       /* ================================
-         BEYOND
+         NEWS SECTION
          ================================ */
-      .beyond-text {
-        font-size: .95rem;
+      .news-list {
+        display: flex;
+        flex-direction: column;
+      }
+
+      .news-item {
+        display: grid;
+        grid-template-columns: 150px 1fr;
+        gap: 1.5rem;
+        padding: 1.2rem 0;
+        border-bottom: 1px solid var(--card-border);
+      }
+
+      .news-item:first-child {
+        border-top: 1px solid var(--card-border);
+      }
+
+      .news-date {
+        font-size: 0.82rem;
+        font-weight: 500;
+        color: var(--fg-dim);
+        white-space: nowrap;
+      }
+
+      .news-content {
+        font-size: 0.92rem;
         color: var(--fg-secondary);
-        line-height: 1.8;
+        line-height: 1.75;
+      }
+
+      .news-content a {
+        color: var(--accent);
+        text-decoration: none;
+        font-weight: 500;
+      }
+
+      .news-content a:hover {
+        text-decoration: underline;
+      }
+
+      .news-toggle {
+        display: inline-block;
+        margin-top: 1.2rem;
+        font-size: 0.85rem;
+        font-weight: 500;
+        color: var(--accent);
+        cursor: pointer;
+        border: none;
+        background: none;
+        padding: 0;
+        font-family: var(--sans);
+        transition: color 0.2s;
+      }
+
+      .news-toggle:hover {
+        color: var(--accent-hover);
+      }
+
+      .news-extra {
+        display: none;
+      }
+
+      .news-extra.show {
+        display: grid;
+      }
+
+      @media (max-width: 480px) {
+        .news-item {
+          grid-template-columns: 1fr;
+          gap: 0.3rem;
+        }
       }
 
       /* ================================
          FOOTER
          ================================ */
       footer {
-        margin-top: 4.5rem;
-        padding-top: 1.8rem;
-        border-top: 1px solid var(--border);
+        margin-top: 6rem;
+        padding: 2rem 0;
+        border-top: 1px solid var(--card-border);
         display: flex;
         justify-content: space-between;
         align-items: center;
         flex-wrap: wrap;
-        gap: .8rem;
+        gap: 1rem;
       }
 
-      footer p { font-size: .8rem; color: var(--fg-dim); }
+      footer p {
+        font-size: 0.78rem;
+        color: var(--fg-dim);
+      }
+
       footer a {
-        font-size: .8rem;
+        font-size: 0.78rem;
         color: var(--accent);
         text-decoration: none;
         font-weight: 500;
+        transition: color 0.2s;
       }
       footer a:hover { color: var(--accent-hover); }
 
       /* ================================
-         FADE-IN
+         ANIMATIONS
          ================================ */
+      @keyframes fadeUp {
+        from { opacity: 0; transform: translateY(20px); }
+        to { opacity: 1; transform: translateY(0); }
+      }
+
       .fade-in {
         opacity: 0;
-        transform: translateY(14px);
-        transition: opacity .6s ease, transform .6s ease;
+        transform: translateY(18px);
+        transition: opacity 0.7s ease, transform 0.7s ease;
       }
       .fade-in.visible { opacity: 1; transform: translateY(0); }
 
       /* ================================
          RESPONSIVE
          ================================ */
-      @media (max-width: 820px) {
-        .header {
+      @media (max-width: 960px) {
+        .hero {
+          grid-template-columns: 1fr 280px;
+          gap: 3rem;
+          padding-top: 4rem;
+          min-height: auto;
+        }
+        .paper {
           grid-template-columns: 1fr;
-          gap: 1.5rem;
+          gap: 0;
         }
-        .header-photo {
-          width: 180px;
-          height: 220px;
-          justify-self: start;
-          order: -1;
+        .paper-venue {
+          grid-column: 1;
+          margin-bottom: 0.6rem;
         }
+        .paper-body {
+          grid-column: 1;
+        }
+        h1 { font-size: 2.4rem; }
       }
 
-      @media (max-width: 640px) {
-        .hero { height: 160px; }
-        .page { padding: 0 1.25rem 4rem; }
-        h1 { font-size: 2.15rem; }
-        .header { padding-top: 2.2rem; }
-        .header-photo {
-          width: 150px;
-          height: 190px;
+      @media (max-width: 768px) {
+        .page { padding: 0 1.5rem 4rem; }
+        .hero {
+          grid-template-columns: 1fr;
+          gap: 2rem;
+          padding-top: 3rem;
+          padding-bottom: 2.5rem;
         }
-        .shelf { grid-template-columns: 1fr; }
-        section { margin-top: 3rem; }
+        .hero-photo-wrap {
+          max-width: 260px;
+          order: -1;
+        }
+        h1 { font-size: 2.3rem; }
+        section { margin-top: 4rem; }
+        .beyond-grid { grid-template-columns: 1fr; gap: 2rem; }
+        .topnav-links { gap: 1rem; }
+      }
+
+      @media (max-width: 480px) {
+        .page { padding: 0 1rem 3rem; }
+        h1 { font-size: 1.9rem; }
+        .hero { padding-top: 2.5rem; }
+        .paper { padding: 1.5rem; }
+        .topnav-links a { font-size: 0.75rem; }
       }
     </style>
   </head>
   <body>
 
-    <!-- ================================
-         HERO — twilight sky
-         ================================ -->
-    <div class="hero">
-      <canvas id="starfield"></canvas>
+    <!-- AMBIENT BACKGROUND -->
+    <div class="ambient">
+      <div class="ambient-orb"></div>
+      <div class="ambient-orb"></div>
+      <div class="ambient-orb"></div>
     </div>
 
-    <!-- ================================
-         PAGE
-         ================================ -->
+    <!-- PAGE -->
     <div class="page">
 
-      <div class="header fade-in">
-        <div class="header-text">
+      <!-- NAV -->
+      <nav class="topnav">
+        <a class="topnav-name" href="/"><div class="topnav-star"></div></a>
+        <div class="topnav-links">
+          <a href="https://github.com/va1shn9v/" target="_blank" rel="noopener">GitHub</a>
+          <a href="blog/">Blog</a>
+          <a href="https://twitter.com/__vaishnav" target="_blank" rel="noopener">Twitter</a>
+          <a href="https://www.linkedin.com/in/vaishnav-potlapalli/" target="_blank" rel="noopener">LinkedIn</a>
+          <a href="data/vaishnav_resume.pdf">Resume</a>
+        </div>
+      </nav>
+
+      <!-- HERO -->
+      <div class="hero">
+        <div class="hero-text">
           <h1>Vaishnav Potlapalli</h1>
-          <p class="bio">
-            Researcher and engineer at the intersection of computer vision, LLMs, and AI agents.
-            M.S. in CS from <a href="https://www.nyu.edu/" target="_blank" rel="noopener">NYU</a>, previously at <a href="https://mbzuai.ac.ae/" target="_blank" rel="noopener">MBZUAI</a> working on image restoration and video retrieval.
-            I care about teaching machines to see, reason about what they see, and act on it.
-          </p>
-          <p class="bio-motto">చరైవేతి చరైవేతి — <span>keep going, keep going</span></p>
+          <div class="hero-bio">
+            <p>
+              Hi! I was most recently a Software Engineer - ML at <a href="https://www.sedai.io/" target="_blank" rel="noopener">Sedai</a>, where I was building intelligent LLM routing systems that dynamically select across models based on query complexity and cost budgets, autonomous optimization engines for Databricks, and observability tooling for AI agents. I spent most of my time thinking about how to make agentic workflows cheaper, faster, and more reliable. <strong>I am currently looking for my next thing focused on RL post-training, video/worlds models, inference engineering, etc., if you have something interesting, please reach out!</strong>
+            </p>
+            <p>
+              Before Sedai, I was a founding ML engineer at <a href="https://www.floma.co/" target="_blank" rel="noopener"></a><strong>Floma</strong></a>, where I worked on building multimodal LLM agents that programmatically generate marketing creatives like display ads. Prior to that, I spent a year as a research assistant at <a href="https://mbzuai.ac.ae/" target="_blank" rel="noopener">MBZUAI</a> with <a href="https://salman-h-khan.github.io/" target="_blank" rel="noopener">Dr. Salman Khan</a>, working on various problems in computer vision and ml — that's where I built <a href="https://arxiv.org/abs/2306.13090" target="_blank" rel="noopener">PromptIR</a>, a prompt-learning framework for blind image restoration that was published at NeurIPS 2023.
+            </p>
+            <p>
+              I did my masters at <a href="https://www.nyu.edu/" target="_blank" rel="noopener">NYU Courant</a> in Computing, Entrepreneurship, and Innovation and was awarded the M. Michael Waller Fellowship. Over the years I've been lucky to publish research at venues like NeurIPS, CVPR, and BioNLP — spanning image restoration, composed video retrieval, sketch-based retrieval, and clinical NLP with some amazing collaborators.
+            </p>
+          </div>
 
-          <nav class="links">
-            <a href="https://github.com/va1shn9v/">GitHub</a>
-            <a href="/blog/">Blog</a>
-            <a href="https://twitter.com/__vaishnav">Twitter</a>
-            <a href="https://www.linkedin.com/in/vaishnav-potlapalli/">LinkedIn</a>
-            <a href="data/vaishnav_resume.pdf">Resume</a>
-          </nav>
+          <div class="hero-motto">
+            <span class="motto-telugu">చరైవేతి చరైవేతి</span>
+            <span class="motto-context"> — "keep walking, keep walking" — an ancient exhortation from the Aitareya Brahmana that speaks to the spirit of endless exploration; the idea that there is always more to discover, always a reason to keep moving forward.</span>
+          </div>
 
-          <div class="status">
-            <strong>✦ Open to work</strong> — looking for research engineering / applied ML roles in vision-language models, AI agents, or multimodal systems. <a href="mailto:vaishnav@vaishnavrao.com">Let's talk →</a>
+          <div class="hero-cta">
+            <a class="primary" href="mailto:pvaishnav2718@gmail.com">Get in touch</a>
+            <a href="blog/">Blog</a>
+            <a href="https://scholar.google.com/citations?user=YOUR_ID" target="_blank" rel="noopener">Google Scholar</a>
+            <a href="data/vaishnav_resume.pdf">Resume ↗</a>
+          </div>
+
+          <div class="status-bar">
+            <div class="status-dot"></div>
+            <div>
+              <strong>Open to work</strong> — looking for roles focused on RL post-training, video/world models, and inference engineering. <a href="mailto:pvaishnav2718@gmail.com">Let's talk →</a>
+            </div>
           </div>
         </div>
-        <img class="header-photo" src="images/photo.jpg" alt="Vaishnav Potlapalli" />
+
+        <div class="hero-photo-wrap">
+          <div class="hero-photo-accent"></div>
+          <img class="hero-photo" src="images/vp.jpg" alt="Vaishnav Potlapalli" />
+        </div>
       </div>
+
+      <!-- NEWS -->
+      <section class="fade-in">
+        <div class="section-label">Updates</div>
+        <h2>News</h2>
+
+        <div class="news-list">
+          <div class="news-item">
+            <span class="news-date">February 2026</span>
+            <div class="news-content">Our paper <a href="https://openreview.net/forum?id=RqDlk9x3Eg">CoVR-R: Reason-Aware Composed Video Retrieval</a> has been accepted to CVPR 2026!</div>
+          </div>
+        </div>
+
+        <button class="news-toggle" onclick="toggleNews(this)">Show more</button>
+      </section>
 
       <!-- PAPERS -->
       <section class="fade-in">
+        <div class="section-label">Research</div>
         <h2>Selected Papers</h2>
+
         <div class="papers-list">
 
           <div class="paper">
-            <div class="paper-head">
+            <span class="paper-venue">NeurIPS '23</span>
+            <div class="paper-body">
               <a class="paper-title" href="https://arxiv.org/abs/2306.13090" target="_blank" rel="noopener">PromptIR: Prompting for All-in-One Blind Image Restoration</a>
-              <span class="paper-venue">NeurIPS '23</span>
+              <div class="paper-authors"><strong>Vaishnav Rao Potlapalli</strong>, Syed Waqas Zamir, Salman Khan, Fahad Shahbaz Khan</div>
+              <div class="paper-desc">A single prompt-learning model that handles denoising, deblurring, deraining, and dehazing — no degradation-specific networks needed.</div>
+              <div class="paper-links">
+                <a class="paper-link" href="https://arxiv.org/abs/2306.13090" target="_blank" rel="noopener">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+                  Paper
+                </a>
+                <a class="paper-link" href="https://github.com/va1shn9v/PromptIR" target="_blank" rel="noopener">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+                  Code
+                </a>
+                <a class="paper-link" href="https://va1shn9v.github.io/PromptIR/" target="_blank" rel="noopener">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+                  Project
+                </a>
+              </div>
             </div>
-            <div class="paper-authors"><strong>Vaishnav Rao Potlapalli</strong>, Syed Waqas Zamir, Salman Khan, Fahad Shahbaz Khan</div>
-            <div class="paper-desc">A single prompt-learning model that handles denoising, deblurring, deraining, and dehazing — no degradation-specific networks needed.</div>
           </div>
 
           <div class="paper">
-            <div class="paper-head">
+            <span class="paper-venue">CVPR '26</span>
+            <div class="paper-body">
               <a class="paper-title" href="https://openreview.net/forum?id=RqDlk9x3Eg" target="_blank" rel="noopener">CoVR-R: Reason-Aware Composed Video Retrieval</a>
-              <span class="paper-venue">CVPR '26 Findings</span>
+              <div class="paper-authors">Omkar Thawakar, Dmitry Demidov, <strong>Vaishnav Potlapalli</strong>, Sai Prasanna Teja Reddy Bogireddy, Viswanatha Reddy Gajjala, Alaa Mostafa Lasheen, Rao Muhammad Anwer, Fahad Shahbaz Khan</div>
+              <div class="paper-desc">Extends composed video retrieval with explicit reasoning chains that explain why a retrieved video matches the query.</div>
+              <div class="paper-links">
+                <a class="paper-link" href="https://openreview.net/forum?id=RqDlk9x3Eg" target="_blank" rel="noopener">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+                  Paper
+                </a>
+              </div>
             </div>
-            <div class="paper-authors">Omkar Thawakar, Dmitry Demidov, <strong>Vaishnav Potlapalli</strong>, Sai Prasanna Teja Reddy Bogireddy, Viswanatha Reddy Gajjala, Alaa Mostafa Lasheen, Rao Muhammad Anwer, Fahad Shahbaz Khan</div>
-            <div class="paper-desc">Extends composed video retrieval with explicit reasoning chains that explain why a retrieved video matches the query.</div>
           </div>
 
           <div class="paper">
-            <div class="paper-head">
+            <span class="paper-venue">BioNLP '25</span>
+            <div class="paper-body">
               <a class="paper-title" href="https://arxiv.org/abs/2506.10751" target="_blank" rel="noopener">Neural at ArchEHR-QA 2025: Agentic Prompt Optimization for Evidence-Grounded Clinical QA</a>
-              <span class="paper-venue">BioNLP '25</span>
+              <div class="paper-authors">Sai Prasanna Teja Reddy Bogireddy, Abrar Majeedi, Viswanath Gajjala, Zhuoyan Xu, Siddhant Rai, <strong>Vaishnav Potlapalli</strong></div>
+              <div class="paper-desc">Agentic prompt optimization for grounding clinical question answering in electronic health record evidence.</div>
+              <div class="paper-links">
+                <a class="paper-link" href="https://arxiv.org/abs/2506.10751" target="_blank" rel="noopener">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+                  Paper
+                </a>
+              </div>
             </div>
-            <div class="paper-authors">Sai Prasanna Teja Reddy Bogireddy, Abrar Majeedi, Viswanath Gajjala, Zhuoyan Xu, Siddhant Rai, <strong>Vaishnav Potlapalli</strong></div>
-            <div class="paper-desc">Agentic prompt optimization for grounding clinical question answering in electronic health record evidence.</div>
           </div>
 
           <div class="paper">
-            <div class="paper-head">
+            <span class="paper-venue">CVPR '22</span>
+            <div class="paper-body">
               <a class="paper-title" href="https://arxiv.org/abs/2203.14691" target="_blank" rel="noopener">Sketch3T: Test-Time Training for Zero-Shot SBIR</a>
-              <span class="paper-venue">CVPR '22</span>
+              <div class="paper-authors">Aneeshan Sain, Ayan Kumar Bhunia, <strong>Vaishnav Rao Potlapalli</strong>, Pinaki Nath Chowdhury, Tao Xiang, Yi-Zhe Song</div>
+              <div class="paper-desc">Adapts a retrieval model at test time to bridge the domain gap between freehand sketches and photos, zero-shot.</div>
+              <div class="paper-links">
+                <a class="paper-link" href="https://arxiv.org/abs/2203.14691" target="_blank" rel="noopener">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+                  Paper
+                </a>
+              </div>
             </div>
-            <div class="paper-authors">Aneeshan Sain, Ayan Kumar Bhunia, <strong>Vaishnav Rao Potlapalli</strong>, Pinaki Nath Chowdhury, Tao Xiang, Yi-Zhe Song</div>
-            <div class="paper-desc">Adapts a retrieval model at test time to bridge the domain gap between freehand sketches and photos, zero-shot.</div>
           </div>
 
           <div class="paper">
-            <div class="paper-head">
+            <span class="paper-venue">ICDARW '21</span>
+            <div class="paper-body">
               <a class="paper-title" href="https://link.springer.com/chapter/10.1007/978-3-030-86198-8_9" target="_blank" rel="noopener">MediTables: Dataset &amp; Deep Network for Multi-Category Table Localisation in Medical Docs</a>
-              <span class="paper-venue">ICDARW '21</span>
+              <div class="paper-authors">Akshay Deshpande, <strong>Vaishnav Rao Potlapalli</strong>, Ravi Kiran Sarvadevabhatla</div>
+              <div class="paper-desc">A deep learning pipeline for detecting and localizing multiple categories of tables in scanned medical documents.</div>
+              <div class="paper-links">
+                <a class="paper-link" href="https://link.springer.com/chapter/10.1007/978-3-030-86198-8_9" target="_blank" rel="noopener">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+                  Paper
+                </a>
+              </div>
             </div>
-            <div class="paper-authors">Akshay Deshpande, <strong>Vaishnav Rao Potlapalli</strong>, Ravi Kiran Sarvadevabhatla</div>
-            <div class="paper-desc">A deep learning pipeline for detecting and localizing multiple categories of tables in scanned medical documents.</div>
           </div>
 
-        </div>
-      </section>
-
-      <!-- SHELF -->
-      <section class="fade-in">
-        <h2>Bookshelf &amp; Watchlist</h2>
-        <p class="reading-intro">
-          Some things that shaped how I think — about intelligence, about the universe, about building things. Not a complete list, just what I'd hand someone if they asked what I'm about.
-        </p>
-        <div class="shelf">
-          <div class="shelf-item">
-            <div class="title">Gödel, Escher, Bach</div>
-            <div class="meta">Douglas Hofstadter</div>
-          </div>
-          <div class="shelf-item">
-            <div class="title">The Elegant Universe</div>
-            <div class="meta">Brian Greene</div>
-          </div>
-          <div class="shelf-item">
-            <div class="title">The Three-Body Problem</div>
-            <div class="meta">Liu Cixin</div>
-          </div>
-          <!-- <div class="shelf-item">
-            <div class="title">Interstellar</div>
-            <div class="meta">Christopher Nolan</div>
-          </div> -->
-          <!-- <div class="shelf-item">
-            <div class="title">Arrival</div>
-            <div class="meta">Denis Villeneuve</div>
-          </div> -->
-          <!-- <div class="shelf-item">
-            <div class="title">Distill.pub</div>
-            <div class="meta">Clear thinking about ML</div>
-          </div> -->
-          <div class="shelf-item">
-            <div class="title">The Book of Why</div>
-            <div class="meta">Judea Pearl</div>
-          </div>
-          <!-- <div class="shelf-item">
-            <div class="title">Blade Runner 2049</div>
-            <div class="meta">Denis Villeneuve</div>
-          </div> -->
         </div>
       </section>
 
       <!-- BEYOND -->
       <section class="fade-in">
-        <h2>Beyond Work</h2>
-        <p class="beyond-text">
-          I'm drawn to questions at the edge of what we know — whether that's the limits of what a model can learn to perceive, or what's actually out there past the heliosphere. I read a lot about astronomy and space exploration. The best sci-fi, to me, uses technology as a lens for asking what it means to be human. I also play Dota 2 — a game that, at its best, is a test of  coordination under uncertainty.
-        </p>
+        <h2>Elsewhere</h2>
+        <div class="beyond-grid">
+          <div class="beyond-text">
+            <p>
+              When I'm not working, I'm usually gaming. I play a lot of Dota 2 — it's the kind of game where you're constantly making calls with incomplete information, and every match feels different. I also love roguelites like Hades and Slay the Spire for similar reasons; every run is a fresh puzzle.
+            </p>
+            <p style="margin-top: 1rem;">
+              I'm a big fantasy reader. Currently working through Ken Liu's <em>The Dandelion Dynasty</em> — it's an epic that blends silkpunk technology, political philosophy, and a retelling of early Chinese history. Before that it was a lot of Sanderson. I love worldbuilding that takes its internal logic seriously and stories that ask hard questions about power, duty, and what it costs to change the world.
+            </p>
+            <p style="margin-top: 1rem;">
+              I'm also fascinated by history — especially the ancient world, the rise and fall of empires, and how civilizations shaped the ideas we still argue about today. A lot of the fantasy I read draws from real history, and going back to the source material is half the fun.
+            </p>
+            <p style="margin-top: 1rem;">
+              When I need to get away from screens entirely, I go hiking. There's nothing like a long trail to clear your head. I also enjoy sci-fi, astronomy rabbit holes, and film when I find the time.
+            </p>
+          </div>
+          <div class="beyond-aside">
+            <div class="beyond-aside-title">Things I gravitate toward</div>
+            <div class="interest-tags">
+              <span class="interest-tag">Dota 2</span>
+              <span class="interest-tag">Sci-Fi</span>
+              <span class="interest-tag">Fantasy</span>
+              <span class="interest-tag">Trekking / Hikes</span>
+              <span class="interest-tag">History</span>
+            </div>
+          </div>
+        </div>
       </section>
 
+      <!-- FOOTER -->
       <footer>
         <p>Updated Feb 2026</p>
-        <a href="mailto:vaishnav@vaishnavrao.com">say hello →</a>
+        <a href="mailto:pvaishnav2718@gmail.com">say hello →</a>
       </footer>
 
     </div>
 
-    <!-- ================================
-         STARFIELD — twilight stars + shooting stars
-         ================================ -->
+    <!-- FADE-IN OBSERVER -->
     <script>
-      (function() {
-        const canvas = document.getElementById('starfield');
-        const ctx = canvas.getContext('2d');
-        let stars = [], shooters = [];
-        const COUNT = 200;
-        const LINE_DIST = 72;
-
-        function resize() {
-          const dpr = window.devicePixelRatio || 1;
-          const rect = canvas.getBoundingClientRect();
-          canvas.width = rect.width * dpr;
-          canvas.height = rect.height * dpr;
-          ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-        }
-
-        function init() {
-          resize();
-          stars = [];
-          shooters = [];
-          const rect = canvas.getBoundingClientRect();
-          for (let i = 0; i < COUNT; i++) {
-            const y = Math.random() * rect.height;
-            // Stars are brighter near top (darker sky), dimmer near bottom
-            const heightFactor = 1 - (y / rect.height);
-            stars.push({
-              x: Math.random() * rect.width,
-              y: y,
-              r: Math.random() * 1.4 + 0.3,
-              vx: (Math.random() - 0.5) * 0.06,
-              vy: (Math.random() - 0.5) * 0.04,
-              baseAlpha: (Math.random() * 0.4 + 0.15) * Math.pow(heightFactor, 0.6),
-              ts: Math.random() * 0.006 + 0.001,
-              tp: Math.random() * Math.PI * 2,
-              hue: Math.random() < 0.75 ? 210 + Math.random() * 30 : 30 + Math.random() * 20,
-              sat: Math.random() * 20 + 10
-            });
-          }
-        }
-
-        function spawnShooter() {
-          const rect = canvas.getBoundingClientRect();
-          // Only in top 60% of canvas
-          const startY = Math.random() * rect.height * 0.5;
-          const angle = Math.PI * 0.15 + Math.random() * Math.PI * 0.15; // ~25-55 deg
-          const speed = 2.5 + Math.random() * 3;
-          shooters.push({
-            x: Math.random() * rect.width * 0.8,
-            y: startY,
-            vx: Math.cos(angle) * speed,
-            vy: Math.sin(angle) * speed,
-            life: 1,
-            decay: 0.015 + Math.random() * 0.01,
-            len: 40 + Math.random() * 60
-          });
-        }
-
-        function draw(t) {
-          const rect = canvas.getBoundingClientRect();
-          const cw = rect.width, ch = rect.height;
-          ctx.clearRect(0, 0, cw, ch);
-
-          // Move stars
-          for (const s of stars) {
-            s.x += s.vx;
-            s.y += s.vy;
-            if (s.x < -4) s.x = cw + 4;
-            if (s.x > cw + 4) s.x = -4;
-            if (s.y < -4) s.y = ch + 4;
-            if (s.y > ch + 4) s.y = -4;
-            s.ca = s.baseAlpha + Math.sin(t * s.ts + s.tp) * 0.12;
-          }
-
-          // Constellation lines — faint, only in upper half
-          for (let i = 0; i < stars.length; i++) {
-            if (stars[i].y > ch * 0.6) continue;
-            for (let j = i + 1; j < stars.length; j++) {
-              if (stars[j].y > ch * 0.6) continue;
-              const dx = stars[i].x - stars[j].x;
-              const dy = stars[i].y - stars[j].y;
-              const dist = Math.sqrt(dx * dx + dy * dy);
-              if (dist < LINE_DIST) {
-                const a = (1 - dist / LINE_DIST) * 0.07;
-                ctx.beginPath();
-                ctx.moveTo(stars[i].x, stars[i].y);
-                ctx.lineTo(stars[j].x, stars[j].y);
-                ctx.strokeStyle = `rgba(160, 185, 220, ${a})`;
-                ctx.lineWidth = 0.5;
-                ctx.stroke();
-              }
-            }
-          }
-
-          // Stars
-          for (const s of stars) {
-            if (s.ca <= 0) continue;
-            ctx.beginPath();
-            ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
-            ctx.fillStyle = `hsla(${s.hue}, ${s.sat}%, 92%, ${s.ca})`;
-            ctx.fill();
-            // Glow on brighter stars
-            if (s.ca > 0.3 && s.r > 0.9) {
-              ctx.beginPath();
-              ctx.arc(s.x, s.y, s.r * 2.5, 0, Math.PI * 2);
-              ctx.fillStyle = `hsla(${s.hue}, ${s.sat}%, 92%, ${s.ca * 0.12})`;
-              ctx.fill();
-            }
-          }
-
-          // Shooting stars
-          if (Math.random() < 0.004) spawnShooter();
-
-          for (let i = shooters.length - 1; i >= 0; i--) {
-            const sh = shooters[i];
-            sh.x += sh.vx;
-            sh.y += sh.vy;
-            sh.life -= sh.decay;
-
-            if (sh.life <= 0) {
-              shooters.splice(i, 1);
-              continue;
-            }
-
-            const tailX = sh.x - sh.vx * (sh.len / Math.sqrt(sh.vx * sh.vx + sh.vy * sh.vy));
-            const tailY = sh.y - sh.vy * (sh.len / Math.sqrt(sh.vx * sh.vx + sh.vy * sh.vy));
-
-            const grad = ctx.createLinearGradient(tailX, tailY, sh.x, sh.y);
-            grad.addColorStop(0, `rgba(255,255,255,0)`);
-            grad.addColorStop(1, `rgba(210,225,255,${sh.life * 0.6})`);
-
-            ctx.beginPath();
-            ctx.moveTo(tailX, tailY);
-            ctx.lineTo(sh.x, sh.y);
-            ctx.strokeStyle = grad;
-            ctx.lineWidth = 1.2;
-            ctx.stroke();
-
-            // Bright head
-            ctx.beginPath();
-            ctx.arc(sh.x, sh.y, 1.2, 0, Math.PI * 2);
-            ctx.fillStyle = `rgba(255,255,255,${sh.life * 0.7})`;
-            ctx.fill();
-          }
-
-          requestAnimationFrame(draw);
-        }
-
-        window.addEventListener('resize', () => { resize(); });
-        init();
-        requestAnimationFrame(draw);
-      })();
-
-      // Fade-in
       const obs = new IntersectionObserver((entries) => {
-        entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
-      }, { threshold: 0.05 });
+        entries.forEach(e => {
+          if (e.isIntersecting) {
+            e.target.classList.add('visible');
+          }
+        });
+      }, { threshold: 0.08 });
+
       document.querySelectorAll('.fade-in').forEach(el => obs.observe(el));
+
+      function toggleNews(btn) {
+        const extras = document.querySelectorAll('.news-extra');
+        const isHidden = !extras[0].classList.contains('show');
+        extras.forEach(el => el.classList.toggle('show', isHidden));
+        btn.textContent = isHidden ? 'Show less' : 'Show more';
+      }
     </script>
 
   </body>
